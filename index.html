@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NĀBE - Hotpot &amp; BBQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#cdc6b8",
+                        "primary-container": "#800000",
+                        "primary": "#ffb4a8",
+                        "surface": "#1d100e",
+                        "surface-bright": "#463533",
+                        "on-secondary-fixed": "#1e1b13",
+                        "on-tertiary-fixed-variant": "#004f53",
+                        "background": "#1d100e",
+                        "on-surface-variant": "#e2bfb9",
+                        "tertiary-fixed-dim": "#83d3d9",
+                        "primary-fixed": "#ffdad4",
+                        "outline": "#a98984",
+                        "on-primary-container": "#ff8371",
+                        "surface-container": "#2a1c1a",
+                        "tertiary-container": "#004447",
+                        "secondary-fixed-dim": "#cdc6b8",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "error-container": "#93000a",
+                        "tertiary": "#83d3d9",
+                        "outline-variant": "#5a413d",
+                        "on-secondary-container": "#beb8aa",
+                        "on-primary-fixed": "#410000",
+                        "error": "#ffb4ab",
+                        "on-background": "#f7ddd8",
+                        "deep-maroon": "#4A0000",
+                        "surface-container-low": "#261816",
+                        "on-tertiary-container": "#63b4b9",
+                        "surface-container-highest": "#41312e",
+                        "surface-container-high": "#362624",
+                        "on-surface": "#f7ddd8",
+                        "on-secondary-fixed-variant": "#4b463c",
+                        "surface-container-lowest": "#170b09",
+                        "on-tertiary": "#003739",
+                        "surface-variant": "#41312e",
+                        "inverse-primary": "#b22b1d",
+                        "inverse-surface": "#f7ddd8",
+                        "social-teal": "#7FCFD4",
+                        "on-error": "#690005",
+                        "hot-red": "#B30000",
+                        "secondary-fixed": "#e9e2d3",
+                        "surface-tint": "#ffb4a8",
+                        "on-tertiary-fixed": "#002021",
+                        "inverse-on-surface": "#3d2d2a",
+                        "on-primary-fixed-variant": "#8f0f07",
+                        "on-secondary": "#343026",
+                        "surface-dim": "#1d100e",
+                        "vintage-cream": "#FDF5E6",
+                        "secondary-container": "#4d493e",
+                        "tertiary-fixed": "#a0f0f5",
+                        "on-primary": "#690000"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "5rem",
+                        "gutter": "1rem",
+                        "stack-lg": "3rem",
+                        "margin-mobile": "1.25rem",
+                        "stack-xs": "0.25rem",
+                        "stack-sm": "0.75rem",
+                        "stack-md": "1.5rem"
+                    },
+                    fontFamily: {
+                        "price-display": ["Anton"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Anton"],
+                        "headline-lg-mobile": ["Anton"],
+                        "headline-lg": ["Anton"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Space Grotesk"]
+                    },
+                    fontSize: {
+                        "price-display": ["24px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .custom-border { border: 3px solid #FDF5E6; }
+        .custom-border-teal { border: 3px solid #7FCFD4; }
+        .section-divider { border-top: 4px solid #FDF5E6; }
+        select { background-image: none !important; }
+    </style>
+</head>
+<body class="bg-primary-container text-vintage-cream antialiased font-body-md">
+<!-- TopAppBar -->
+<header class="bg-deep-maroon dark:bg-background full-width top-0 sticky z-50 border-b-4 border-social-teal">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-vintage-cream flex items-center gap-4">
+<img alt="NĀBE Logo" class="h-12 w-auto object-contain hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGMhcNgAJff0xLO8zo0x0DAvGBAIxKX8dH1w9S2ZHacNKTd678Yvdl1wqeRCRla1JuAz4DtLY1D5MetwiGAx6uAYEt7UwVV-RL7F89MZwrfN79Qb2yteAvFgV7LdaTNlHWWRw2v1qrfIwqPDsph095ryinlwWKyEv5aR37zxEq_23EElIRL4ZUsZfh9w_HOEDQ_D9LiBOxZZyU4b9lXLACfKyyZmIiHGcn7PBJdp_ELGdKQUnwKmSp6XTG1DSvhaPcQPM"/>
+<span>NĀBE</span>
+</div>
+<nav class="hidden lg:flex gap-6 items-center">
+<a class="font-label-bold text-label-bold text-social-teal font-bold border-b-2 border-social-teal pb-1" href="#">Strona Główna</a>
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Zamów</a>
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Rezerwacja</a>
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Galeria</a>
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Kontakt</a>
+<div class="flex items-center gap-2 ml-4">
+<span class="material-symbols-outlined text-vintage-cream text-lg">language</span>
+<select class="bg-transparent text-vintage-cream font-label-bold text-sm border-none focus:ring-0 cursor-pointer p-0">
+<option class="bg-surface text-white" selected="" value="pl">Polski</option>
+<option class="bg-surface text-white" value="en">Angielski</option>
+</select>
+</div>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-vintage-cream font-label-bold text-label-bold hover:text-social-teal transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined">person</span>
+                Zaloguj się
+            </button>
+<button class="bg-social-teal text-black font-label-bold text-label-bold px-4 py-2 md:px-6 md:py-3 uppercase tracking-wider custom-border hover:bg-vintage-cream transition-colors text-xs md:text-label-bold">Zarezerwuj Stolik</button>
+</div>
+</div>
+</header>
+<!-- Quick Booking Section -->
+<section class="bg-surface-container-high py-4 px-margin-mobile md:px-margin-desktop border-b-2 border-vintage-cream/20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-social-teal">calendar_today</span>
+<span class="font-label-bold text-lg uppercase">Szybka Rezerwacja:</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full md:w-auto flex-grow max-w-3xl">
+<div class="relative">
+<select class="w-full bg-surface-container border-2 border-vintage-cream/30 p-2 text-vintage-cream font-body-md focus:border-social-teal outline-none">
+<option disabled="" selected="">Liczba osób</option>
+<option>1-2 osoby</option>
+<option>3-4 osoby</option>
+<option>5-6 osób</option>
+<option>7+ osób</option>
+</select>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container border-2 border-vintage-cream/30 p-2 text-vintage-cream font-body-md focus:border-social-teal outline-none" placeholder="Data i godzina" type="datetime-local"/>
+</div>
+<div class="relative">
+<select class="w-full bg-surface-container border-2 border-vintage-cream/30 p-2 text-vintage-cream font-body-md focus:border-social-teal outline-none">
+<option disabled="" selected="">Lokalizacja</option>
+<option>Warszawa Centrum</option>
+<option>Kraków Kazimierz</option>
+</select>
+</div>
+</div>
+<button class="w-full md:w-auto bg-vintage-cream text-black font-label-bold px-8 py-2.5 uppercase hover:bg-social-teal transition-colors shrink-0">ZAREZERWUJ</button>
+</div>
+</section>
+<!-- Hero Section -->
+<section class="relative w-full h-[819px] min-h-[600px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-black/50 z-10"></div>
+<img alt="Vibrant lifestyle photo of hotpot dining" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzWGsfAb-M0O0FiA6TFp7Ipwtpj-Sh_dzhY8NZeHh4ypIKt3VDh65nCi9-S-NIEHLtYnxTfZNabVN-Z8u9KtGJX4OlyAun5nFMcU6lrbcTMAtf4uhwSNxsXSFguZj-KGHWm0dRp6XsGEBPkdVGs3IpEonAZTrhOXLVNn1vzDjLLkdmqntXhF5UnTiMTW_sDVxmGPxHQLGon4lqsUvHifY0qODiJuDg0EssVESwbf71b7tmI8dIP_SqJg"/>
+</div>
+<div class="relative z-20 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center gap-stack-md">
+<h1 class="font-headline-xl text-headline-xl text-vintage-cream uppercase drop-shadow-lg">NĂBE - WSPÓLNY HOTPOT &amp; BBQ</h1>
+<p class="font-body-lg text-body-lg text-vintage-cream max-w-2xl bg-deep-maroon/80 p-stack-sm custom-border backdrop-blur-sm">Miejsce spotkań i dobrej zabawy przy parującym kociołku hotpot i aromatycznym BBQ.</p>
+<button class="bg-social-teal text-black font-label-bold text-label-bold px-8 py-4 text-lg uppercase tracking-wider custom-border hover:bg-vintage-cream transition-colors mt-stack-sm inline-flex items-center gap-2">
+            Zarezerwuj stolik <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Sharing Menu Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop section-divider bg-primary-container">
+<div class="max-w-6xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-vintage-cream text-center mb-stack-lg uppercase tracking-wider">BENTO + ZUPA + WODA</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-stack-md">
+<!-- Menu Item -->
+<div class="flex flex-col border-b border-vintage-cream/30 pb-stack-sm hover:bg-white/5 p-stack-sm transition-colors group">
+<div class="flex justify-between items-start w-full">
+<h3 class="font-label-bold text-label-bold text-vintage-cream uppercase text-lg group-hover:text-social-teal transition-colors">TOM YUM FRIED RICE Z KREWETKAMI</h3>
+<span class="font-price-display text-price-display text-social-teal">48</span>
+</div>
+<p class="font-body-md text-body-md text-vintage-cream/80 mt-stack-xs uppercase text-sm">RYŻ SMAŻONY / WARZYWA / KREWETKI 7 SZT. / DODATKI</p>
+</div>
+<!-- Menu Item -->
+<div class="flex flex-col border-b border-vintage-cream/30 pb-stack-sm hover:bg-white/5 p-stack-sm transition-colors group">
+<div class="flex justify-between items-start w-full">
+<h3 class="font-label-bold text-label-bold text-vintage-cream uppercase text-lg group-hover:text-social-teal transition-colors">ŁOSOŚ TERIYAKI</h3>
+<span class="font-price-display text-price-display text-social-teal">45</span>
+</div>
+<p class="font-body-md text-body-md text-vintage-cream/80 mt-stack-xs uppercase text-sm">RYŻ / BROKUŁY / DODATKI</p>
+</div>
+<!-- Menu Item -->
+<div class="flex flex-col border-b border-vintage-cream/30 pb-stack-sm hover:bg-white/5 p-stack-sm transition-colors group">
+<div class="flex justify-between items-start w-full">
+<h3 class="font-label-bold text-label-bold text-vintage-cream uppercase text-lg group-hover:text-social-teal transition-colors">KACZKA TERIYAKI Z RYŻEM SMAŻONYM</h3>
+<span class="font-price-display text-price-display text-social-teal">45</span>
+</div>
+<p class="font-body-md text-body-md text-vintage-cream/80 mt-stack-xs uppercase text-sm">RYŻ SMAŻONY / WARZYWA / DODATKI</p>
+</div>
+<!-- Menu Item -->
+<div class="flex flex-col border-b border-vintage-cream/30 pb-stack-sm hover:bg-white/5 p-stack-sm transition-colors group">
+<div class="flex justify-between items-start w-full">
+<h3 class="font-label-bold text-label-bold text-vintage-cream uppercase text-lg group-hover:text-social-teal transition-colors">WOŁOWINA W SOSIE Z CZARNEGO PIEPRZU</h3>
+<span class="font-price-display text-price-display text-social-teal">45</span>
+</div>
+<p class="font-body-md text-body-md text-vintage-cream/80 mt-stack-xs uppercase text-sm">RYŻ / BROKUŁY / GRZYBY / MARCHEW / DODATKI</p>
+</div>
+<!-- Menu Item -->
+<div class="flex flex-col border-b border-vintage-cream/30 pb-stack-sm hover:bg-white/5 p-stack-sm transition-colors group">
+<div class="flex justify-between items-start w-full">
+<h3 class="font-label-bold text-label-bold text-vintage-cream uppercase text-lg group-hover:text-social-teal transition-colors">KURCZAK KFC</h3>
+<span class="font-price-display text-price-display text-social-teal">45</span>
+</div>
+<p class="font-body-md text-body-md text-vintage-cream/80 mt-stack-xs uppercase text-sm">PANIEROWANE W PIKANTNYM GOCHUJANG / RYŻ / WARZYWA / DODATKI</p>
+</div>
+<!-- Menu Item -->
+<div class="flex flex-col border-b border-vintage-cream/30 pb-stack-sm hover:bg-white/5 p-stack-sm transition-colors group">
+<div class="flex justify-between items-start w-full">
+<h3 class="font-label-bold text-label-bold text-vintage-cream uppercase text-lg group-hover:text-social-teal transition-colors">GRILLOWANE SZASZŁYKI Z KURCZAKA SATAY</h3>
+<span class="font-price-display text-price-display text-social-teal">42</span>
+</div>
+<p class="font-body-md text-body-md text-vintage-cream/80 mt-stack-xs uppercase text-sm">UDKA Z KURCZAKA / SZALOTKA / SAKE / TRAWA CYTRYNOWA / ORZECHOWY SATAY / RYŻ / DODATKI</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Vibe Check Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop section-divider bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex flex-col justify-center p-stack-md bg-deep-maroon custom-border">
+<h2 class="font-headline-lg text-headline-lg text-vintage-cream uppercase mb-stack-sm">ILE TO KOSZTUJE?</h2>
+<h2 class="font-headline-xl text-headline-xl text-social-teal uppercase mb-stack-md text-right">UCZCIWIE.</h2>
+<ul class="space-y-stack-sm font-body-lg text-body-lg text-vintage-cream">
+<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> ZAMAWIACIE Z KARTY NA POZYCJE</li>
+<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> DLA EKIP 12+ I IMPREZ FIRMOWYCH MOŻEMY PRZYGOTOWAĆ SPECJALNĄ OFERTĘ I MENU</li>
+<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> I TAK, DOLEWKA BULIONU, SOSÓW I LODÓW SĄ NO LIMIT</li>
+</ul>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<img alt="Lifestyle photography at NABE" class="w-full h-full object-cover custom-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKnRG2AZhcgHgRMdWaN0MjDeqPQt31S88GQLipl3edvjyC_pCkCldKM0ctc3YH73KHB_sAnZo6W-iz-N03-soc7JVlit9AYTTviK172TeiVfw6ytwKOZhhrtM7KtSTZLy9U6q3Zrpc14rQzFIur46kjqkvI7MmkUiM3fB_a8hwUkTLH7xw3hdDsWvIpTt_rmGVlJJvddlOh5IOWXjOcRlqbERLxJWioBgTJVDKSpzTozznF3v-sNHqig"/>
+<img alt="Atmosphere at NABE" class="w-full h-full object-cover custom-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKnRG2AZhcgHgRMdWaN0MjDeqPQt31S88GQLipl3edvjyC_pCkCldKM0ctc3YH73KHB_sAnZo6W-iz-N03-soc7JVlit9AYTTviK172TeiVfw6ytwKOZhhrtM7KtSTZLy9U6q3Zrpc14rQzFIur46kjqkvI7MmkUiM3fB_a8hwUkTLH7xw3hdDsWvIpTt_rmGVlJJvddlOh5IOWXjOcRlqbERLxJWioBgTJVDKSpzTozznF3v-sNHqig"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Special Promotion Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop section-divider bg-tertiary-container relative overflow-hidden">
+<div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-stack-lg">
+<div class="w-full md:w-1/2">
+<img alt="Special drink promo" class="w-full h-auto object-contain drop-shadow-2xl custom-border-teal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl8FnxmE6MBLQcFiTKtPrtGaHvB5GsLGMpuC4yv_ud2KDJyQtIRxJ7HapaiGMsc6vQtUxB5Dots9ZIh6yO3RPJapA_bu4lYNnJ-Gb9bVtgCFcXXlp-TOFpOn_CMgA1-0icKx58YOPEX9KKW-9dXMFgJE8iGTHfjNechHIyjRtqzwH2WftAREDbKkN9N6uAa5nQ0FA1GLwgL5hnmg9kKtfmbaRdbsBsMlRnQNXmRmKnTqHVf6JeL-ucHA"/>
+</div>
+<div class="w-full md:w-1/2 flex flex-col gap-stack-sm">
+<div class="flex items-center gap-4 mb-stack-xs">
+<span class="font-label-bold text-label-bold text-vintage-cream bg-black px-3 py-1 uppercase tracking-widest custom-border">Specjalne</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-social-teal uppercase leading-none drop-shadow-md">Spróbuj <br/><span class="text-vintage-cream">1800 Paloma</span></h2>
+<p class="font-body-lg text-body-lg text-vintage-cream max-w-md mt-stack-xs">Idealne, orzeźwiające połączenie do pikantnego hotpotu i aromatycznego BBQ.</p>
+<div class="mt-stack-md flex gap-4 items-center">
+<button class="bg-social-teal text-black font-label-bold text-label-bold px-8 py-4 text-lg uppercase tracking-wider custom-border hover:bg-vintage-cream transition-colors">Zamów teraz</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Guest Reviews Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop section-divider bg-surface">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-vintage-cream text-center mb-stack-lg uppercase tracking-wider">CO MÓWIĄ NASI GOŚCIE</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Review 1 -->
+<div class="bg-deep-maroon/40 p-8 custom-border flex flex-col gap-4">
+<div class="flex text-social-teal">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<p class="font-body-lg italic text-vintage-cream">"Najlepszy hotpot w mieście! Atmosfera jest niesamowita, a jedzenie zawsze świeże. Uwielbiam system no-limit na lody!"</p>
+<span class="font-label-bold uppercase text-social-teal">— Karolina W.</span>
+</div>
+<!-- Review 2 -->
+<div class="bg-deep-maroon/40 p-8 custom-border flex flex-col gap-4">
+<div class="flex text-social-teal">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<p class="font-body-lg italic text-vintage-cream">"Świetne miejsce na spotkanie z paczką znajomych. BBQ jest aromatyczne, a obsługa bardzo pomocna w doborze sosów."</p>
+<span class="font-label-bold uppercase text-social-teal">— Marek T.</span>
+</div>
+<!-- Review 3 -->
+<div class="bg-deep-maroon/40 p-8 custom-border flex flex-col gap-4">
+<div class="flex text-social-teal">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<p class="font-body-lg italic text-vintage-cream">"NĀBE to totalny vibe! Flash photography na ścianach dodaje klimatu, a jedzenie jest po prostu obłędne. Polecam bento!"</p>
+<span class="font-label-bold uppercase text-social-teal">— Julia S.</span>
+</div>
+<!-- Review 4 -->
+<div class="bg-deep-maroon/40 p-8 custom-border flex flex-col gap-4">
+<div class="flex text-social-teal">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<p class="font-body-lg italic text-vintage-cream">"Uczciwe ceny i genialna jakość. Paloma to idealny drink do pikantnych dań. Będziemy wracać regularnie!"</p>
+<span class="font-label-bold uppercase text-social-teal">— Tomasz K.</span>
+</div>
+<!-- Review 5 -->
+<div class="bg-deep-maroon/40 p-8 custom-border flex flex-col gap-4">
+<div class="flex text-social-teal">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<p class="font-body-lg italic text-vintage-cream">"Niezapomniane wrażenia kulinarne. Wspólne gotowanie przy stole zbliża ludzi. NĀBE to coś więcej niż restauracja."</p>
+<span class="font-label-bold uppercase text-social-teal">— Anna M.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-black full-width p-stack-lg border-t-4 border-deep-maroon">
+<div class="flex flex-col md:flex-row justify-between items-start gap-gutter max-w-7xl mx-auto">
+<div class="flex flex-col gap-stack-sm">
+<span class="font-headline-lg text-headline-lg text-social-teal uppercase tracking-tighter">NĀBE</span>
+<p class="font-body-md text-body-md text-vintage-cream dark:text-on-surface opacity-70">© 2024 NĀBE HOTPOT &amp; BBQ. WSZELKIE PRAWA ZASTRZEŻONE.</p>
+</div>
+<nav class="flex flex-col md:flex-row gap-stack-md md:gap-gutter">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Polityka Prywatności</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Regulamin</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Kariera</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Materiały Prasowe</a>
+</nav>
+</div>
+</footer>
+</body></html>
