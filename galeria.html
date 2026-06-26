@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NABE | GALERIA</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "primary": "#ffb4a8",
+                  "on-background": "#f7ddd8",
+                  "error-container": "#93000a",
+                  "on-surface-variant": "#e2bfb9",
+                  "tertiary-fixed": "#a0f0f5",
+                  "secondary": "#cdc6b8",
+                  "secondary-container": "#4d493e",
+                  "on-tertiary-container": "#63b4b9",
+                  "on-secondary-fixed-variant": "#4b463c",
+                  "on-tertiary-fixed-variant": "#004f53",
+                  "on-secondary-fixed": "#1e1b13",
+                  "on-primary-container": "#ff8371",
+                  "on-tertiary": "#003739",
+                  "error": "#ffb4ab",
+                  "outline-variant": "#5a413d",
+                  "background": "#1d100e",
+                  "surface-container-highest": "#41312e",
+                  "on-error-container": "#ffdad6",
+                  "surface-container": "#2a1c1a",
+                  "tertiary": "#83d3d9",
+                  "tertiary-container": "#004447",
+                  "inverse-surface": "#f7ddd8",
+                  "on-primary-fixed-variant": "#8f0f07",
+                  "surface": "#1d100e",
+                  "surface-variant": "#41312e",
+                  "on-primary": "#690000",
+                  "primary-fixed": "#ffdad4",
+                  "hot-red": "#B30000",
+                  "vintage-cream": "#FDF5E6",
+                  "inverse-primary": "#b22b1d",
+                  "outline": "#a98984",
+                  "on-secondary": "#343026",
+                  "secondary-fixed": "#e9e2d3",
+                  "secondary-fixed-dim": "#cdc6b8",
+                  "on-secondary-container": "#beb8aa",
+                  "surface-dim": "#1d100e",
+                  "on-error": "#690005",
+                  "tertiary-fixed-dim": "#83d3d9",
+                  "on-surface": "#f7ddd8",
+                  "surface-bright": "#463533",
+                  "surface-container-low": "#261816",
+                  "on-tertiary-fixed": "#002021",
+                  "surface-container-lowest": "#170b09",
+                  "inverse-on-surface": "#3d2d2a",
+                  "surface-container-high": "#362624",
+                  "on-primary-fixed": "#410000",
+                  "primary-container": "#800000",
+                  "social-teal": "#7FCFD4",
+                  "primary-fixed-dim": "#ffb4a8",
+                  "surface-tint": "#ffb4a8",
+                  "deep-maroon": "#4A0000"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "stack-lg": "3rem",
+                  "stack-sm": "0.75rem",
+                  "margin-mobile": "1.25rem",
+                  "margin-desktop": "5rem",
+                  "stack-md": "1.5rem",
+                  "stack-xs": "0.25rem",
+                  "gutter": "1rem"
+          },
+          "fontFamily": {
+                  "label-bold": ["Space Grotesk", "sans-serif"],
+                  "headline-xl": ["Anton", "sans-serif"],
+                  "body-lg": ["Inter", "sans-serif"],
+                  "body-md": ["Inter", "sans-serif"],
+                  "headline-lg": ["Anton", "sans-serif"],
+                  "price-display": ["Anton", "sans-serif"],
+                  "headline-lg-mobile": ["Anton", "sans-serif"]
+          },
+          "fontSize": {
+                  "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                  "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                  "price-display": ["24px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                  "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #1d100e;
+      color: #f7ddd8;
+      overflow-x: hidden;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 300px;
+      }
+      .col-span-2 { grid-column: span 2; }
+      .row-span-2 { grid-row: span 2; }
+    }
+    .flash-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    .flash-glow::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .flash-glow:hover::after {
+      opacity: 1;
+    }
+    .border-accent {
+      border: 3px solid #7FCFD4;
+    }
+    .drop-block {
+      position: relative;
+    }
+    .drop-block::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: -6px;
+      bottom: -6px;
+      background: #7FCFD4;
+      z-index: -1;
+    }
+    .active-nav-item {
+        color: #7dd3fc !important;
+        border-bottom: 3px solid #7dd3fc;
+    }
+    html {
+        background-color: #1d100e !important;
+    }
+    body {
+        opacity: 0;
+        transition: opacity 0.35s ease-in-out;
+    }
+    body.page-loaded {
+        opacity: 1;
+    }
+    #gallery-grid img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        filter: contrast(1.04) brightness(1.02);
+    }
+  </style>
+</head>
+<body class="dark bg-background">
+<!-- Header -->
+<nav class="shrink-0 h-20 sticky top-0 bg-background border-b border-surface-variant px-margin-mobile lg:px-margin-desktop flex items-center justify-between z-50">
+<div class="flex items-center gap-12">
+<a class="block w-16 h-16" href="index.html">
+<img alt="NABE Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmBpyt6w8uqdNTQZbRsO0Dgl0vnIpxd2p-p-MiD4KrDXvXzlZcRLc93RObwS1qbnxOuByoSDThkxPvcQg1UrI5Wqgb_MVZRoyF-ANdTrc4v94GIKBqWLHwsHs46U0na1C41Qmq1VigIiZ_A3lillG17KRK93OEJzjfisU9OIwzjPQlYpZrdYSC2XNDxHXaixjpkPZXT5gD0fAIwmj6PcMuyR-sXBkgnR0Nuqlp_mgF9XVtohUfikjWSnqUkudIvsWPRxg"/>
+</a>
+<div class="hidden lg:flex items-center gap-8">
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="index.html" data-i18n="nav-home">Strona Główna</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html" data-i18n="nav-order">Zamów</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html" data-i18n="nav-reservation">Rezerwacja</a>
+<a class="active-nav-item font-bold pb-1" href="galeria.html" data-i18n="nav-gallery">Galeria</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#" data-i18n="nav-contact">Kontakt</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group" id="lang-dropdown-container">
+  <button id="lang-select-btn" class="flex items-center gap-2 text-vintage-cream hover:text-social-teal transition-colors focus:outline-none py-2">
+    <span class="material-symbols-outlined text-xl">language</span>
+    <span id="active-lang-label" class="text-sm font-bold tracking-wider">POLSKI</span>
+    <span class="material-symbols-outlined text-xs transition-transform duration-200 group-hover:rotate-180">keyboard_arrow_down</span>
+  </button>
+  <div id="lang-dropdown-menu" class="absolute right-0 mt-1 w-40 bg-surface-container border border-surface-variant rounded-sm shadow-xl hidden group-hover:flex flex-col z-50">
+    <button onclick="changeLanguage('pl')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+      <span>🇵🇱</span> POLSKI
+    </button>
+    <button onclick="changeLanguage('en')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+      <span>🇬🇧</span> ENGLISH
+    </button>
+    <button onclick="changeLanguage('vi')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream transition-colors">
+      <span>🇻🇳</span> TIẾNG VIỆT
+    </button>
+  </div>
+</div>
+<button onclick="navigateToPage('zamow.html')" data-i18n="btn-book-table" class="bg-social-teal text-background font-bold px-6 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase text-sm tracking-tight">
+            Zarezerwuj stolik
+        </button>
+</div>
+</nav>
+<main class="pt-12 pb-stack-lg px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Hero Header -->
+<div class="mb-16 border-l-8 border-social-teal pl-6">
+<h1 class="font-headline-xl text-headline-xl uppercase text-on-background mb-4" data-i18n="gallery-title">Galeria</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" data-i18n="gallery-desc">
+        Atmosfera, smaki i ludzie. Zajrzyj do naszego świata na Pańskiej. Każde ujęcie to kawałek naszej pasji do Hotpotu i BBQ.
+      </p>
+</div>
+<!-- Category Filter (Minimalist Chips) -->
+<div class="flex flex-wrap gap-4 mb-12" id="gallery-filters">
+<button onclick="filterGallery('all')" data-i18n="filter-all" class="gallery-filter-btn px-4 py-2 border-accent bg-social-teal text-background font-label-bold text-label-bold uppercase">Wszystko</button>
+<button onclick="filterGallery('jedzenie')" data-i18n="filter-food" class="gallery-filter-btn px-4 py-2 border-2 border-on-surface-variant text-on-surface-variant font-label-bold text-label-bold uppercase hover:border-social-teal hover:text-social-teal transition-all">Jedzenie</button>
+<button onclick="filterGallery('drinki')" data-i18n="filter-drinks" class="gallery-filter-btn px-4 py-2 border-2 border-on-surface-variant text-on-surface-variant font-label-bold text-label-bold uppercase hover:border-social-teal hover:text-social-teal transition-all">Drinki</button>
+<button onclick="filterGallery('ludzie')" data-i18n="filter-people" class="gallery-filter-btn px-4 py-2 border-2 border-on-surface-variant text-on-surface-variant font-label-bold text-label-bold uppercase hover:border-social-teal hover:text-social-teal transition-all">Ludzie</button>
+</div>
+<!-- Masonry-ish Gallery Grid -->
+<div class="gallery-grid" id="gallery-grid">
+<!-- Injected Dynamically by JavaScript -->
+</div>
+<!-- Visual Accent Section -->
+<section class="mt-stack-lg flex flex-col md:flex-row items-center gap-stack-md">
+<div class="flex-1 drop-block">
+<div class="bg-deep-maroon p-10 border-2 border-social-teal">
+<h2 class="font-headline-lg text-headline-lg text-social-teal mb-4 uppercase" data-i18n="promo-title">Dołącz do nas</h2>
+<p class="font-body-md text-body-md text-on-surface mb-6" data-i18n="promo-desc">Udostępnij swoje momenty z NABE na Instagramie używając hashtaga #NABEwarszawa. Najlepsze zdjęcia trafią na naszą ścianę sław.</p>
+<button class="px-8 py-3 bg-social-teal text-background font-label-bold text-label-bold uppercase active:scale-95 transition-all" data-i18n="promo-btn">OBSERWUJ @NABE</button>
+</div>
+</div>
+<div class="flex-1 w-full h-64 md:h-[400px] bg-surface-container border-2 border-outline-variant relative">
+<div class="absolute inset-0 flex items-center justify-center p-10">
+<div class="text-center">
+<span class="material-symbols-outlined text-[64px] text-hot-red mb-4" data-icon="restaurant">restaurant</span>
+<p class="font-headline-lg text-headline-lg text-on-surface uppercase" data-i18n="visual-accent-text">Smak orientu w samym sercu miasta</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-black full-width p-stack-lg border-t-4 border-deep-maroon">
+<div class="flex flex-col md:flex-row justify-between items-start gap-gutter max-w-7xl mx-auto">
+<div class="flex flex-col gap-stack-sm">
+<span class="font-headline text-2xl text-social-teal uppercase tracking-tighter">NĀBE</span>
+<p class="text-xs text-vintage-cream dark:text-on-surface opacity-70" data-i18n="footer-desc">© 2024 NĀBE HOTPOT &amp; BBQ. WSZELKIE PRAWA ZASTRZEŻONE.</p>
+</div>
+<nav class="flex flex-col md:flex-row gap-stack-md md:gap-gutter">
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-privacy">Polityka Prywatności</a>
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-terms">Regulamin</a>
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-careers">Kariera</a>
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-press">Materiały Prasowe</a>
+</nav>
+</div>
+</footer>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-background border-t border-hot-red flex justify-around items-center h-16 z-50">
+<a href="index.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-label-bold" data-i18n="mobile-nav-home">DOM</span>
+</a>
+<a href="zamow.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">restaurant_menu</span>
+<span class="text-[10px] font-label-bold" data-i18n="mobile-nav-order">ZAMÓW</span>
+</a>
+<button onclick="navigateToPage('zamow.html')" class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-label-bold" data-i18n="mobile-nav-book">REZERWUJ</span>
+</button>
+</nav>
+
+<!-- Reservation Modal -->
+<div id="booking-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] hidden backdrop-blur-sm p-4">
+  <div class="bg-surface-container border-2 border-social-teal w-full max-w-lg p-8 relative shadow-2xl animate-fade-in">
+    <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-on-surface-variant hover:text-social-teal transition-colors">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <h3 class="font-headline text-3xl text-social-teal uppercase mb-2" data-i18n="modal-booking-title">Rezerwacja stolika</h3>
+    <p class="font-body-md text-sm text-on-surface-variant mb-6" data-i18n="modal-booking-subtitle">Wypełnij formularz, aby zarezerwować stolik w NABE. Skontaktujemy się, aby potwierdzić rezerwację.</p>
+    <form id="modal-booking-form" class="space-y-4" onsubmit="submitBookingForm(event)">
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-name">Imię i Nazwisko</label>
+        <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" placeholder="Jan Kowalski" type="text" id="booking-name"/>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-phone">Numer Telefonu</label>
+          <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" placeholder="+48 123 456 789" type="tel" id="booking-phone"/>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-guests">Liczba osób</label>
+          <select required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" id="booking-guests">
+            <option value="1-2">1-2 osoby</option>
+            <option value="3-4">3-4 osoby</option>
+            <option value="5-6">5-6 osób</option>
+            <option value="7+">7+ osób</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-datetime">Data i Godzina</label>
+          <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" type="datetime-local" id="booking-datetime"/>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-location">Lokalizacja</label>
+          <select required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" id="booking-location">
+            <option value="Warszawa Centrum">Warszawa Centrum</option>
+            <option value="Kraków Kazimierz">Kraków Kazimierz</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-notes">Specjalne życzenia</label>
+        <textarea class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream h-20 resize-none" placeholder="np. stolik przy oknie" id="booking-notes"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-social-teal text-background font-bold py-3 uppercase tracking-widest text-sm hover:brightness-110 active:scale-95 transition-all shadow-lg" data-i18n="btn-confirm-booking">
+        Potwierdź Rezerwację
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Success Notification toast -->
+<div id="toast-notification" class="fixed top-4 right-4 bg-surface-container border-2 border-social-teal p-5 shadow-2xl flex items-center gap-4 z-[200] max-w-sm hidden transition-all duration-300 transform translate-y-[-20px] opacity-0">
+  <span class="material-symbols-outlined text-social-teal text-3xl">check_circle</span>
+  <div>
+    <h4 class="text-sm font-bold text-vintage-cream uppercase" data-i18n="toast-success-title">Dziękujemy!</h4>
+    <p class="text-xs text-on-surface-variant mt-1" data-i18n="toast-success-desc">Rezerwacja została przesłana pomyślnie.</p>
+  </div>
+</div>
+
+<script>
+// Images Database (71 unique images)
+const images = [
+  'facebook_photos/523013216_17848688727521427_6962744718607336275_n.jpg',
+  'facebook_photos/523516736_17849143389521427_2911431530080565956_n.jpg',
+  'facebook_photos/523651687_17849631867521427_4505392569666391129_n.jpg',
+  'facebook_photos/524385827_122115344246941263_3045058924503605995_n.jpg',
+  'facebook_photos/525764789_17849631876521427_2060368697341212925_n.jpg',
+  'facebook_photos/526541215_17849631885521427_4188006861837294137_n.jpg',
+  'facebook_photos/527128111_17850191172521427_6968526073048982286_n.jpg',
+  'facebook_photos/527178902_17850368691521427_3371231863565647660_n.jpg',
+  'facebook_photos/527318652_17850454854521427_8487561610894666920_n.jpg',
+  'facebook_photos/527471722_17850597981521427_5983898255566985408_n.jpg',
+  'facebook_photos/527594923_17850597999521427_1967180659005456942_n.jpg',
+  'facebook_photos/527963711_17850454863521427_1583432006318578763_n.jpg',
+  'facebook_photos/528311535_17850454872521427_4784650298347943523_n.jpg',
+  'facebook_photos/528322883_17850832377521427_1283477989877807777_n.jpg',
+  'facebook_photos/528577300_17850741174521427_1281009486696414440_n.jpg',
+  'facebook_photos/529023207_17850832389521427_868739965183829299_n.jpg',
+  'facebook_photos/529294529_17851148568521427_6826129638170988998_n.jpg',
+  'facebook_photos/530233767_17851413018521427_6891441952301292675_n.jpg',
+  'facebook_photos/530841184_17851413027521427_199837384815318690_n.jpg',
+  'facebook_photos/530866452_17851148586521427_2592327749968259738_n.jpg',
+  'facebook_photos/531247528_17851685343521427_4253372212402111833_n.jpg',
+  'facebook_photos/531318444_17851756767521427_7638209352495692498_n.jpg',
+  'facebook_photos/531390745_17851413009521427_896599564117466717_n.jpg',
+  'facebook_photos/531437259_17851540662521427_7265183328942174596_n.jpg',
+  'facebook_photos/532222068_17851685355521427_2888809328194961917_n.jpg',
+  'facebook_photos/532239869_17851685334521427_7551006806345035327_n.jpg',
+  'facebook_photos/532489788_17851540653521427_5024376898840037483_n.jpg',
+  'facebook_photos/532877683_17851962762521427_5445352532167750424_n.jpg',
+  'facebook_photos/533037363_17852105910521427_7485711008891591150_n.jpg',
+  'facebook_photos/533130484_17852105919521427_468870281903113671_n.jpg',
+  'facebook_photos/540697530_17853659151521427_4435231120237065172_n.jpg',
+  'facebook_photos/541531151_17853659163521427_7907281826831402180_n.jpg',
+  'facebook_photos/559363313_17858330013521427_7777649714943970479_n.jpg',
+  'facebook_photos/560379635_17858330004521427_3095945963887013021_n.jpg',
+  'facebook_photos/561127723_17858639451521427_5956628345671455567_n.jpg',
+  'facebook_photos/561294894_17858639463521427_3617315496498687876_n.jpg',
+  'facebook_photos/562376964_17858885508521427_5121439650065703188_n.jpg',
+  'facebook_photos/565136615_17859475857521427_1222743004062062096_n.jpg',
+  'facebook_photos/568195540_17860352280521427_6254415203139866976_n.jpg',
+  'facebook_photos/569956048_17860352271521427_3445195647739394986_n.jpg',
+  'facebook_photos/573578752_17862017007521427_6865875005988866469_n.jpg',
+  'facebook_photos/576817041_122142995990941263_3916817220959822829_n.jpg',
+  'facebook_photos/587395030_17864372025521427_3161649928647911721_n.jpg',
+  'facebook_photos/603674922_17866815435521427_810712126801225130_n.jpg',
+  'facebook_photos/608362503_17868331368521427_5098836038294335703_n.jpg',
+  'facebook_photos/617336728_17870204010521427_3062393136025405686_n.jpg',
+  'facebook_photos/632045894_17873676414521427_2001588816184635923_n.jpg',
+  'facebook_photos/632591283_122161968854941263_6903960532743714958_n.jpg',
+  'facebook_photos/637452427_122162147372941263_8545671511825379532_n.jpg',
+  'facebook_photos/639716108_17874891342521427_1059083561730678594_n.jpg',
+  'facebook_photos/649246587_17877684594521427_2091576695682931672_n.jpg',
+  'facebook_photos/656206800_17880092514521427_3917250025518078050_n.jpg',
+  'facebook_photos/658862426_17881869108521427_2603216788388763459_n.jpg',
+  'facebook_photos/671187039_17884606506521427_3338374611242764696_n.jpg',
+  'facebook_photos/674549936_17885643948521427_4240476813398420974_n.jpg',
+  'facebook_photos/681116674_17885643957521427_7992801482783326844_n.jpg',
+  'facebook_photos/681116680_17885643936521427_2320562735366222943_n.jpg',
+  'facebook_photos/681557514_17885643978521427_8888665460218168776_n.jpg',
+  'facebook_photos/681728092_17885643927521427_3505422379912411284_n.jpg',
+  'facebook_photos/681868810_17885643969521427_4699198288092750077_n.jpg',
+  'facebook_photos/683426285_17887072854521427_496838479672573455_n.jpg',
+  'facebook_photos/683579378_17887072836521427_3412080899835216050_n.jpg',
+  'facebook_photos/689846656_17887072845521427_3986020394929872261_n.jpg',
+  'facebook_photos/701459627_17888921931521427_5949178764793782095_n.jpg',
+  'facebook_photos/702065025_17888921913521427_8363269949402674811_n.jpg',
+  'facebook_photos/702306746_17888921922521427_6656999511664221570_n.jpg',
+  'facebook_photos/702904106_17888921904521427_5720384525660542477_n.jpg',
+  'facebook_photos/703146410_17888921895521427_6187999428728308381_n.jpg',
+  'facebook_photos/713804798_122181610670941263_1721667653376351502_n.jpg',
+  'facebook_photos/729618387_17894559417521427_9162649240953769457_n.jpg',
+  'facebook_photos/730004967_17894559429521427_1005418733540305362_n.jpg'
+];
+
+// Drink index mapping
+const drinkIndices = [0, 1, 2, 11, 12, 15, 20, 24, 25, 43, 44, 45, 55, 56, 57, 58, 59];
+// People/Interior index mapping
+const peopleIndices = [3, 4, 7, 8, 17, 27, 28, 29, 30, 31, 32, 33, 49, 50, 51, 52, 53, 54, 60, 61, 62];
+
+// Build gallery array of objects
+const galleryData = images.map((src, index) => {
+  let category = 'jedzenie'; // Default
+  if (drinkIndices.includes(index)) {
+    category = 'drinki';
+  } else if (peopleIndices.includes(index)) {
+    category = 'ludzie';
+  }
+  return { src, category };
+});
+
+// Masonry layout class patterns
+const layoutClasses = [
+  'col-span-2 row-span-2', // Big feature
+  '',                      // Standard
+  '',                      // Standard
+  'row-span-2',            // Tall
+  'col-span-2',            // Wide
+  '',                      // Standard
+  '',                      // Standard
+  'col-span-2 row-span-2', // Big feature
+  '',                      // Standard
+  '',                      // Standard
+  'row-span-2',            // Tall
+  '',                      // Standard
+  'col-span-2',            // Wide
+  '',                      // Standard
+];
+
+// Function to render gallery grid dynamically
+function renderGallery(filteredData) {
+  const grid = document.getElementById('gallery-grid');
+  grid.innerHTML = '';
+  
+  filteredData.forEach((item, index) => {
+    // Get layout class based on repeat pattern
+    const layoutClass = layoutClasses[index % layoutClasses.length];
+    
+    const card = document.createElement('div');
+    card.className = `${layoutClass} flash-glow border-2 border-outline-variant bg-surface-container overflow-hidden group opacity-0 transition-opacity duration-500 ease-out`;
+    
+    card.innerHTML = `
+      <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="${item.src}" alt="Nabe Gallery Image">
+    `;
+    
+    grid.appendChild(card);
+    
+    // Smooth fade in
+    setTimeout(() => {
+      card.classList.remove('opacity-0');
+    }, index * 25);
+  });
+}
+
+// Function to handle category filters
+window.filterGallery = function(category) {
+  // Update button active state colors
+  document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+    btn.className = 'gallery-filter-btn px-4 py-2 border-2 border-on-surface-variant text-on-surface-variant font-label-bold text-label-bold uppercase hover:border-social-teal hover:text-social-teal transition-all';
+  });
+  
+  // Highlight active button
+  const event = window.event;
+  if (event && event.currentTarget) {
+    event.currentTarget.className = 'gallery-filter-btn px-4 py-2 border-accent bg-social-teal text-background font-label-bold text-label-bold uppercase';
+  } else {
+    // Fallback if called programmatically
+    const btns = document.querySelectorAll('.gallery-filter-btn');
+    if (category === 'all') btns[0].className = 'gallery-filter-btn px-4 py-2 border-accent bg-social-teal text-background font-label-bold text-label-bold uppercase';
+    else if (category === 'jedzenie') btns[1].className = 'gallery-filter-btn px-4 py-2 border-accent bg-social-teal text-background font-label-bold text-label-bold uppercase';
+    else if (category === 'drinki') btns[2].className = 'gallery-filter-btn px-4 py-2 border-accent bg-social-teal text-background font-label-bold text-label-bold uppercase';
+    else if (category === 'ludzie') btns[3].className = 'gallery-filter-btn px-4 py-2 border-accent bg-social-teal text-background font-label-bold text-label-bold uppercase';
+  }
+
+  // Filter data and render
+  if (category === 'all') {
+    renderGallery(galleryData);
+  } else {
+    const filtered = galleryData.filter(item => item.category === category);
+    renderGallery(filtered);
+  }
+};
+
+// ==========================================
+// TRANSLATION ENGINE (i18n)
+// ==========================================
+const translations = {
+  pl: {
+    "nav-home": "Strona Główna",
+    "nav-order": "Zamów",
+    "nav-reservation": "Rezerwacja",
+    "nav-gallery": "Galeria",
+    "nav-contact": "Kontakt",
+    "btn-book-table": "Zarezerwuj stolik",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. WSZELKIE PRAWA ZASTRZEŻONE.",
+    "footer-privacy": "Polityka Prywatności",
+    "footer-terms": "Regulamin",
+    "footer-careers": "Kariera",
+    "footer-press": "Materiały Prasowe",
+    "mobile-nav-home": "DOM",
+    "mobile-nav-order": "ZAMÓW",
+    "mobile-nav-book": "REZERWUJ",
+    "modal-booking-title": "Rezerwacja stolika",
+    "modal-booking-subtitle": "Wypełnij formularz, aby zarezerwować stolik w NABE. Skontaktujemy się, aby potwierdzić rezerwację.",
+    "label-name": "Imię i Nazwisko",
+    "label-phone": "Numer Telefonu",
+    "label-guests": "Liczba osób",
+    "label-datetime": "Data i Godzina",
+    "label-location": "Lokalizacja",
+    "label-notes": "Specjalne życzenia",
+    "btn-confirm-booking": "Potwierdź Rezerwację",
+    "toast-success-title": "Dziękujemy!",
+    "toast-success-desc": "Rezerwacja została przesłana pomyślnie.",
+    "gallery-title": "Galeria",
+    "gallery-desc": "Atmosfera, smaki i ludzie. Zajrzyj do naszego świata na Pańskiej. Każde ujęcie to kawałek naszej pasji do Hotpotu i BBQ.",
+    "filter-all": "Wszystko",
+    "filter-food": "Jedzenie",
+    "filter-drinks": "Drinki",
+    "filter-people": "Ludzie",
+    "promo-title": "Dołącz do nas",
+    "promo-desc": "Udostępnij swoje momenty z NABE na Instagramie używając hashtaga #NABEwarszawa. Najlepsze zdjęcia trafią na naszą ścianę sław.",
+    "promo-btn": "OBSERWUJ @NABE",
+    "visual-accent-text": "Smak orientu w samym sercu miasta"
+  },
+  en: {
+    "nav-home": "Home",
+    "nav-order": "Order",
+    "nav-reservation": "Reservations",
+    "nav-gallery": "Gallery",
+    "nav-contact": "Contact",
+    "btn-book-table": "Book a Table",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. ALL RIGHTS RESERVED.",
+    "footer-privacy": "Privacy Policy",
+    "footer-terms": "Terms of Service",
+    "footer-careers": "Careers",
+    "footer-press": "Press Materials",
+    "mobile-nav-home": "HOME",
+    "mobile-nav-order": "ORDER",
+    "mobile-nav-book": "BOOK",
+    "modal-booking-title": "Book a Table",
+    "modal-booking-subtitle": "Fill in the form to book a table at NABE. We will contact you to confirm.",
+    "label-name": "Full Name",
+    "label-phone": "Phone Number",
+    "label-guests": "Guests Count",
+    "label-datetime": "Date & Time",
+    "label-location": "Location",
+    "label-notes": "Special Requests",
+    "btn-confirm-booking": "Confirm Booking",
+    "toast-success-title": "Thank you!",
+    "toast-success-desc": "Your reservation has been submitted successfully.",
+    "gallery-title": "Gallery",
+    "gallery-desc": "Atmosphere, flavors, and people. Take a peek into our world on Pańska street. Every shot is a piece of our passion for Hotpot and BBQ.",
+    "filter-all": "All",
+    "filter-food": "Food",
+    "filter-drinks": "Drinks",
+    "filter-people": "People",
+    "promo-title": "Join us",
+    "promo-desc": "Share your moments with NABE on Instagram using hashtag #NABEwarszawa. The best photos will hit our wall of fame.",
+    "promo-btn": "FOLLOW @NABE",
+    "visual-accent-text": "The taste of the Orient in the heart of the city"
+  },
+  vi: {
+    "nav-home": "Trang Chủ",
+    "nav-order": "Đặt Món",
+    "nav-reservation": "Đặt Bàn",
+    "nav-gallery": "Thư Viện Ảnh",
+    "nav-contact": "Liên Hệ",
+    "btn-book-table": "Đặt Bàn Ngay",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. BẢN QUYỀN ĐÃ ĐƯỢC BẢO HỘ.",
+    "footer-privacy": "Chính sách bảo mật",
+    "footer-terms": "Điều khoản dịch vụ",
+    "footer-careers": "Tuyển dụng",
+    "footer-press": "Thông cáo báo chí",
+    "mobile-nav-home": "TRANG CHỦ",
+    "mobile-nav-order": "ĐẶT MÓN",
+    "mobile-nav-book": "ĐẶT BÀN",
+    "modal-booking-title": "Đặt bàn",
+    "modal-booking-subtitle": "Vui lòng điền thông tin để đặt bàn tại NABE. Chúng tôi sẽ liên hệ sớm nhất để xác nhận.",
+    "label-name": "Họ và Tên",
+    "label-phone": "Số Điện Thoại",
+    "label-guests": "Số lượng khách",
+    "label-datetime": "Ngày giờ đặt",
+    "label-location": "Chi nhánh",
+    "label-notes": "Yêu cầu đặc biệt",
+    "btn-confirm-booking": "Xác nhận đặt bàn",
+    "toast-success-title": "Xin cảm ơn!",
+    "toast-success-desc": "Yêu cầu đặt bàn đã gửi thành công.",
+    "gallery-title": "Thư viện ảnh",
+    "gallery-desc": "Không gian, hương vị và con người. Ghé thăm thế giới của chúng tôi trên phố Pańska. Mỗi góc máy là một góc tâm huyết với Lẩu & BBQ.",
+    "filter-all": "Tất Cả",
+    "filter-food": "Món Ăn",
+    "filter-drinks": "Đồ Uống",
+    "filter-people": "Khách Hàng",
+    "promo-title": "Kết nối với chúng tôi",
+    "promo-desc": "Chia sẻ khoảnh khắc tại NABE lên Instagram với hashtag #NABEwarszawa. Những bức ảnh đẹp nhất sẽ xuất hiện trên bức tường danh dự.",
+    "promo-btn": "THEO DÕI @NABE",
+    "visual-accent-text": "Hương vị Á Đông giữa lòng thành phố"
+  }
+};
+
+window.changeLanguage = function(lang) {
+  localStorage.setItem('selectedLanguage', lang);
+  applyTranslations(lang);
+};
+
+function applyTranslations(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      } else {
+        el.innerText = translations[lang][key];
+      }
+    }
+  });
+  
+  // Highlight active active-lang-label in navbar dropdown
+  const labels = { pl: 'POLSKI', en: 'ENGLISH', vi: 'TIẾNG VIỆT' };
+  const labelEl = document.getElementById('active-lang-label');
+  if (labelEl) {
+    labelEl.innerText = labels[lang] || 'POLSKI';
+  }
+  
+  // Sync page elements or dropdown style
+  const options = document.querySelectorAll('#lang-dropdown-menu button');
+  options.forEach(opt => {
+    if (opt.getAttribute('onclick').includes(lang)) {
+      opt.classList.add('text-social-teal');
+    } else {
+      opt.classList.remove('text-social-teal');
+    }
+  });
+}
+
+// ==========================================
+// RESERVATION MODAL
+// ==========================================
+window.openBookingModal = function() {
+  document.getElementById('booking-modal').classList.remove('hidden');
+};
+
+window.closeBookingModal = function() {
+  document.getElementById('booking-modal').classList.add('hidden');
+};
+
+window.submitBookingForm = function(event) {
+  event.preventDefault();
+  closeBookingModal();
+  showToastNotification();
+  
+  // Clear form
+  document.getElementById('modal-booking-form').reset();
+};
+
+function showToastNotification() {
+  const toast = document.getElementById('toast-notification');
+  toast.classList.remove('hidden');
+  setTimeout(() => {
+    toast.classList.remove('opacity-0', 'translate-y-[-20px]');
+  }, 50);
+  
+  setTimeout(() => {
+    toast.classList.add('opacity-0', 'translate-y-[-20px]');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 300);
+  }, 4000);
+}
+
+// Close modal when clicking outside form
+document.getElementById('booking-modal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeBookingModal();
+  }
+});
+
+// ==========================================
+// INITIAL SETUP
+// ==========================================
+window.navigateToPage = function(url) {
+  document.body.classList.remove('page-loaded');
+  setTimeout(() => {
+    window.location.href = url;
+  }, 350);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Render all 71 images in grid
+  filterGallery('all');
+  
+  // 2. Initialize Language from storage or default to PL
+  const savedLang = localStorage.getItem('selectedLanguage') || 'pl';
+  changeLanguage(savedLang);
+  
+  // 3. Close language menu on clicking outside if clicked on mobile
+  const langSelectBtn = document.getElementById('lang-select-btn');
+  const langMenu = document.getElementById('lang-dropdown-menu');
+  if (langSelectBtn && langMenu) {
+    langSelectBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => {
+      langMenu.classList.add('hidden');
+    });
+  }
+
+  // Smooth page loading transition
+  document.body.classList.add('page-loaded');
+
+  // Intercept clicks on links for smooth fadeout transition
+  document.querySelectorAll('a').forEach(link => {
+    if (
+      link.hostname === window.location.hostname &&
+      link.pathname &&
+      !link.hash &&
+      link.getAttribute('href') !== '#' &&
+      link.target !== '_blank'
+    ) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const destination = link.href;
+        navigateToPage(destination);
+      });
+    }
+  });
+});
+</script>
+</body></html>

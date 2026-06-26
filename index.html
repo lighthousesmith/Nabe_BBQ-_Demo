@@ -111,6 +111,16 @@
             color: #7dd3fc !important;
             border-bottom: 3px solid #7dd3fc;
         }
+        html {
+            background-color: #1d100e !important;
+        }
+        body {
+            opacity: 0;
+            transition: opacity 0.35s ease-in-out;
+        }
+        body.page-loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-primary-container text-vintage-cream antialiased font-body-md">
@@ -121,19 +131,33 @@
 <img alt="NABE Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmBpyt6w8uqdNTQZbRsO0Dgl0vnIpxd2p-p-MiD4KrDXvXzlZcRLc93RObwS1qbnxOuByoSDThkxPvcQg1UrI5Wqgb_MVZRoyF-ANdTrc4v94GIKBqWLHwsHs46U0na1C41Qmq1VigIiZ_A3lillG17KRK93OEJzjfisU9OIwzjPQlYpZrdYSC2XNDxHXaixjpkPZXT5gD0fAIwmj6PcMuyR-sXBkgnR0Nuqlp_mgF9XVtohUfikjWSnqUkudIvsWPRxg"/>
 </a>
 <div class="hidden lg:flex items-center gap-8">
-<a class="active-nav-item font-bold pb-1" href="index.html">Strona Główna</a>
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html">Zamów</a>
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Rezerwacja</a>
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Galeria</a>
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Kontakt</a>
+<a class="active-nav-item font-bold pb-1" href="index.html" data-i18n="nav-home">Strona Główna</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html" data-i18n="nav-order">Zamów</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html" data-i18n="nav-reservation">Rezerwacja</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="galeria.html" data-i18n="nav-gallery">Galeria</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#" data-i18n="nav-contact">Kontakt</a>
 </div>
 </div>
 <div class="flex items-center gap-6">
-<div class="hidden sm:flex items-center gap-2 text-vintage-cream cursor-pointer">
-<span class="material-symbols-outlined text-xl">language</span>
-<span class="text-sm font-bold">POLSKI</span>
+<div class="relative group" id="lang-dropdown-container">
+  <button id="lang-select-btn" class="flex items-center gap-2 text-vintage-cream hover:text-social-teal transition-colors focus:outline-none py-2">
+    <span class="material-symbols-outlined text-xl">language</span>
+    <span id="active-lang-label" class="text-sm font-bold tracking-wider">POLSKI</span>
+    <span class="material-symbols-outlined text-xs transition-transform duration-200 group-hover:rotate-180">keyboard_arrow_down</span>
+  </button>
+  <div id="lang-dropdown-menu" class="absolute right-0 mt-1 w-40 bg-surface-container border border-surface-variant rounded-sm shadow-xl hidden group-hover:flex flex-col z-50">
+    <button onclick="changeLanguage('pl')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+      <span>🇵🇱</span> POLSKI
+    </button>
+    <button onclick="changeLanguage('en')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+      <span>🇬🇧</span> ENGLISH
+    </button>
+    <button onclick="changeLanguage('vi')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream transition-colors">
+      <span>🇻🇳</span> TIẾNG VIỆT
+    </button>
+  </div>
 </div>
-<button class="bg-social-teal text-background font-bold px-6 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase text-sm tracking-tight">
+<button onclick="navigateToPage('zamow.html')" data-i18n="btn-book-table" class="bg-social-teal text-background font-bold px-6 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase text-sm tracking-tight">
             Zarezerwuj stolik
         </button>
 </div>
@@ -143,12 +167,12 @@
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-social-teal">calendar_today</span>
-<span class="font-label-bold text-lg uppercase">Szybka Rezerwacja:</span>
+<span class="font-label-bold text-lg uppercase" data-i18n="index-quick-booking">Szybka Rezerwacja:</span>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full md:w-auto flex-grow max-w-3xl">
 <div class="relative">
 <select class="w-full bg-surface-container border-2 border-vintage-cream/30 p-2 text-vintage-cream font-body-md focus:border-social-teal outline-none">
-<option disabled="" selected="">Liczba osób</option>
+<option disabled="" selected="" data-i18n="index-people-placeholder">Liczba osób</option>
 <option>1-2 osoby</option>
 <option>3-4 osoby</option>
 <option>5-6 osób</option>
@@ -160,13 +184,13 @@
 </div>
 <div class="relative">
 <select class="w-full bg-surface-container border-2 border-vintage-cream/30 p-2 text-vintage-cream font-body-md focus:border-social-teal outline-none">
-<option disabled="" selected="">Lokalizacja</option>
+<option disabled="" selected="" data-i18n="index-location-placeholder">Lokalizacja</option>
 <option>Warszawa Centrum</option>
 <option>Kraków Kazimierz</option>
 </select>
 </div>
 </div>
-<button class="w-full md:w-auto bg-social-teal text-background font-bold px-8 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase tracking-tight shrink-0">ZAREZERWUJ</button>
+<button onclick="navigateToPage('zamow.html')" data-i18n="index-btn-book" class="w-full md:w-auto bg-social-teal text-background font-bold px-8 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase tracking-tight shrink-0">ZAREZERWUJ</button>
 </div>
 </section>
 <!-- Hero Section -->
@@ -176,10 +200,10 @@
 <img alt="Vibrant lifestyle photo of hotpot dining" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzWGsfAb-M0O0FiA6TFp7Ipwtpj-Sh_dzhY8NZeHh4ypIKt3VDh65nCi9-S-NIEHLtYnxTfZNabVN-Z8u9KtGJX4OlyAun5nFMcU6lrbcTMAtf4uhwSNxsXSFguZj-KGHWm0dRp6XsGEBPkdVGs3IpEonAZTrhOXLVNn1vzDjLLkdmqntXhF5UnTiMTW_sDVxmGPxHQLGon4lqsUvHifY0qODiJuDg0EssVESwbf71b7tmI8dIP_SqJg"/>
 </div>
 <div class="relative z-20 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center gap-stack-md">
-<h1 class="font-headline-xl text-headline-xl text-vintage-cream uppercase drop-shadow-lg">NĂBE - WSPÓLNY HOTPOT &amp; BBQ</h1>
-<p class="font-body-lg text-body-lg text-vintage-cream max-w-2xl bg-deep-maroon/80 p-stack-sm custom-border backdrop-blur-sm">Miejsce spotkań i dobrej zabawy przy parującym kociołku hotpot i aromatycznym BBQ.</p>
-<button class="bg-social-teal text-background font-bold px-8 py-4 text-lg uppercase tracking-wider rounded-sm hover:brightness-110 transition-all mt-stack-sm inline-flex items-center gap-2">
-            Zarezerwuj stolik <span class="material-symbols-outlined">arrow_forward</span>
+<h1 class="font-headline-xl text-headline-xl text-vintage-cream uppercase drop-shadow-lg" data-i18n="index-hero-title">NĂBE - WSPÓLNY HOTPOT &amp; BBQ</h1>
+<p class="font-body-lg text-body-lg text-vintage-cream max-w-2xl bg-deep-maroon/80 p-stack-sm custom-border backdrop-blur-sm" data-i18n="index-hero-desc">Miejsce spotkań i dobrej zabawy przy parującym kociołku hotpot i aromatycznym BBQ.</p>
+<button onclick="navigateToPage('zamow.html')" class="bg-social-teal text-background font-bold px-8 py-4 text-lg uppercase tracking-wider rounded-sm hover:brightness-110 transition-all mt-stack-sm inline-flex items-center gap-2">
+            <span data-i18n="index-hero-btn">Zarezerwuj stolik</span> <span class="material-symbols-outlined">arrow_forward</span>
 </button>
 </div>
 </section>
@@ -244,12 +268,12 @@
 <div class="max-w-7xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
 <div class="flex flex-col justify-center p-stack-md bg-deep-maroon custom-border">
-<h2 class="font-headline-lg text-headline-lg text-vintage-cream uppercase mb-stack-sm">ILE TO KOSZTUJE?</h2>
-<h2 class="font-headline-xl text-headline-xl text-social-teal uppercase mb-stack-md text-right">UCZCIWIE.</h2>
+<h2 class="font-headline-lg text-headline-lg text-vintage-cream uppercase mb-stack-sm" data-i18n="index-price-title">ILE TO KOSZTUJE?</h2>
+<h2 class="font-headline-xl text-headline-xl text-social-teal uppercase mb-stack-md text-right" data-i18n="index-price-subtitle">UCZCIWIE.</h2>
 <ul class="space-y-stack-sm font-body-lg text-body-lg text-vintage-cream">
-<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> ZAMAWIACIE Z KARTY NA POZYCJE</li>
-<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> DLA EKIP 12+ I IMPREZ FIRMOWYCH MOŻEMY PRZYGOTOWAĆ SPECJALNĄ OFERTĘ I MENU</li>
-<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> I TAK, DOLEWKA BULIONU, SOSÓW I LODÓW SĄ NO LIMIT</li>
+<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> <span data-i18n="index-price-li1">ZAMAWIACIE Z KARTY NA POZYCJE</span></li>
+<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> <span data-i18n="index-price-li2">DLA EKIP 12+ I IMPREZ FIRMOWYCH MOŻEMY PRZYGOTOWAĆ SPECJALNĄ OFERTĘ I MENU</span></li>
+<li class="flex items-start gap-2"><span class="text-social-teal font-bold">—</span> <span data-i18n="index-price-li3">I TAK, DOLEWKA BULIONU, SOSÓW I LODÓW SĄ NO LIMIT</span></li>
 </ul>
 </div>
 <div class="grid grid-cols-2 gap-4">
@@ -349,34 +373,346 @@
 <footer class="bg-surface-container-lowest dark:bg-black full-width p-stack-lg border-t-4 border-deep-maroon">
 <div class="flex flex-col md:flex-row justify-between items-start gap-gutter max-w-7xl mx-auto">
 <div class="flex flex-col gap-stack-sm">
-<span class="font-headline-lg text-headline-lg text-social-teal uppercase tracking-tighter">NĀBE</span>
-<p class="font-body-md text-body-md text-vintage-cream dark:text-on-surface opacity-70">© 2024 NĀBE HOTPOT &amp; BBQ. WSZELKIE PRAWA ZASTRZEŻONE.</p>
+<span class="font-headline text-2xl text-social-teal uppercase tracking-tighter">NĀBE</span>
+<p class="text-xs text-vintage-cream dark:text-on-surface opacity-70" data-i18n="footer-desc">© 2024 NĀBE HOTPOT &amp; BBQ. WSZELKIE PRAWA ZASTRZEŻONE.</p>
 </div>
 <nav class="flex flex-col md:flex-row gap-stack-md md:gap-gutter">
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Polityka Prywatności</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Regulamin</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Kariera</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Materiały Prasowe</a>
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-privacy">Polityka Prywatności</a>
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-terms">Regulamin</a>
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-careers">Kariera</a>
+<a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-press">Materiały Prasowe</a>
 </nav>
 </div>
-<!-- Mobile Bottom Navigation (Shell Implementation) -->
+</footer>
+
+<!-- Mobile Bottom Navigation -->
 <nav class="md:hidden fixed bottom-0 left-0 w-full bg-background border-t border-hot-red flex justify-around items-center h-16 z-50">
 <a href="index.html" class="flex flex-col items-center gap-1 text-social-teal">
 <span class="material-symbols-outlined">home</span>
-<span class="text-[10px] font-label-bold">DOM</span>
+<span class="text-[10px] font-label-bold" data-i18n="mobile-nav-home">DOM</span>
 </a>
 <a href="zamow.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
 <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">restaurant_menu</span>
-<span class="text-[10px] font-label-bold">ZAMÓW</span>
+<span class="text-[10px] font-label-bold" data-i18n="mobile-nav-order">ZAMÓW</span>
 </a>
-<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button onclick="navigateToPage('zamow.html')" class="flex flex-col items-center gap-1 text-on-surface-variant">
 <span class="material-symbols-outlined">event</span>
-<span class="text-[10px] font-label-bold">REZERWUJ</span>
-</button>
-<button class="flex flex-col items-center gap-1 text-on-surface-variant">
-<span class="material-symbols-outlined">shopping_cart</span>
-<span class="text-[10px] font-label-bold">KOSZYK</span>
+<span class="text-[10px] font-label-bold" data-i18n="mobile-nav-book">REZERWUJ</span>
 </button>
 </nav>
 
+<!-- Reservation Modal -->
+<div id="booking-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] hidden backdrop-blur-sm p-4">
+  <div class="bg-surface-container border-2 border-social-teal w-full max-w-lg p-8 relative shadow-2xl animate-fade-in">
+    <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-on-surface-variant hover:text-social-teal transition-colors">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <h3 class="font-headline text-3xl text-social-teal uppercase mb-2" data-i18n="modal-booking-title">Rezerwacja stolika</h3>
+    <p class="font-body-md text-sm text-on-surface-variant mb-6" data-i18n="modal-booking-subtitle">Wypełnij formularz, aby zarezerwować stolik w NABE. Skontaktujemy się, aby potwierdzić rezerwację.</p>
+    <form id="modal-booking-form" class="space-y-4" onsubmit="submitBookingForm(event)">
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-name">Imię i Nazwisko</label>
+        <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" placeholder="Jan Kowalski" type="text" id="booking-name"/>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-phone">Numer Telefonu</label>
+          <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" placeholder="+48 123 456 789" type="tel" id="booking-phone"/>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-guests">Liczba osób</label>
+          <select required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" id="booking-guests">
+            <option value="1-2">1-2 osoby</option>
+            <option value="3-4">3-4 osoby</option>
+            <option value="5-6">5-6 osób</option>
+            <option value="7+">7+ osób</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-datetime">Data i Godzina</label>
+          <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" type="datetime-local" id="booking-datetime"/>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-location">Lokalizacja</label>
+          <select required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" id="booking-location">
+            <option value="Warszawa Centrum">Warszawa Centrum</option>
+            <option value="Kraków Kazimierz">Kraków Kazimierz</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-notes">Specjalne życzenia</label>
+        <textarea class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream h-20 resize-none" placeholder="np. stolik przy oknie" id="booking-notes"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-social-teal text-background font-bold py-3 uppercase tracking-widest text-sm hover:brightness-110 active:scale-95 transition-all shadow-lg" data-i18n="btn-confirm-booking">
+        Potwierdź Rezerwację
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Success Notification toast -->
+<div id="toast-notification" class="fixed top-4 right-4 bg-surface-container border-2 border-social-teal p-5 shadow-2xl flex items-center gap-4 z-[200] max-w-sm hidden transition-all duration-300 transform translate-y-[-20px] opacity-0">
+  <span class="material-symbols-outlined text-social-teal text-3xl">check_circle</span>
+  <div>
+    <h4 class="text-sm font-bold text-vintage-cream uppercase" data-i18n="toast-success-title">Dziękujemy!</h4>
+    <p class="text-xs text-on-surface-variant mt-1" data-i18n="toast-success-desc">Rezerwacja została przesłana pomyślnie.</p>
+  </div>
+</div>
+
+<script>
+// ==========================================
+// TRANSLATION ENGINE (i18n)
+// ==========================================
+const translations = {
+  pl: {
+    "nav-home": "Strona Główna",
+    "nav-order": "Zamów",
+    "nav-reservation": "Rezerwacja",
+    "nav-gallery": "Galeria",
+    "nav-contact": "Kontakt",
+    "btn-book-table": "Zarezerwuj stolik",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. WSZELKIE PRAWA ZASTRZEŻONE.",
+    "footer-privacy": "Polityka Prywatności",
+    "footer-terms": "Regulamin",
+    "footer-careers": "Kariera",
+    "footer-press": "Materiały Prasowe",
+    "mobile-nav-home": "DOM",
+    "mobile-nav-order": "ZAMÓW",
+    "mobile-nav-book": "REZERWUJ",
+    "modal-booking-title": "Rezerwacja stolika",
+    "modal-booking-subtitle": "Wypełnij formularz, aby zarezerwować stolik w NABE. Skontaktujemy się, aby potwierdzić rezerwację.",
+    "label-name": "Imię i Nazwisko",
+    "label-phone": "Numer Telefonu",
+    "label-guests": "Liczba osób",
+    "label-datetime": "Data i Godzina",
+    "label-location": "Lokalizacja",
+    "label-notes": "Specjalne życzenia",
+    "btn-confirm-booking": "Potwierdź Rezerwację",
+    "toast-success-title": "Dziękujemy!",
+    "toast-success-desc": "Rezerwacja została przesłana pomyślnie.",
+    "index-quick-booking": "Szybka Rezerwacja:",
+    "index-people-placeholder": "Liczba osób",
+    "index-location-placeholder": "Lokalizacja",
+    "index-btn-book": "ZAREZERWUJ",
+    "index-hero-title": "NĂBE - WSPÓLNY HOTPOT & BBQ",
+    "index-hero-desc": "Miejsce spotkań i dobrej zabawy przy parującym kociołku hotpot i aromatycznym BBQ.",
+    "index-hero-btn": "Zarezerwuj stolik",
+    "index-menu-title": "BENTO + ZUPA + WODA",
+    "index-price-title": "ILE TO KOSZTUJE?",
+    "index-price-subtitle": "UCZCIWIE.",
+    "index-price-li1": "ZAMAWIACIE Z KARTY NA POZYCJE",
+    "index-price-li2": "DLA EKIP 12+ I IMPREZ FIRMOWYCH MOŻEMY PRZYGOTOWAĆ SPECJALNĄ OFERTĘ I MENU",
+    "index-price-li3": "I TAK, DOLEWKA BULIONU, SOSÓW I LODÓW SĄ NO LIMIT"
+  },
+  en: {
+    "nav-home": "Home",
+    "nav-order": "Order",
+    "nav-reservation": "Reservations",
+    "nav-gallery": "Gallery",
+    "nav-contact": "Contact",
+    "btn-book-table": "Book a Table",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. ALL RIGHTS RESERVED.",
+    "footer-privacy": "Privacy Policy",
+    "footer-terms": "Terms of Service",
+    "footer-careers": "Careers",
+    "footer-press": "Press Materials",
+    "mobile-nav-home": "HOME",
+    "mobile-nav-order": "ORDER",
+    "mobile-nav-book": "BOOK",
+    "modal-booking-title": "Book a Table",
+    "modal-booking-subtitle": "Fill in the form to book a table at NABE. We will contact you to confirm.",
+    "label-name": "Full Name",
+    "label-phone": "Phone Number",
+    "label-guests": "Guests Count",
+    "label-datetime": "Date & Time",
+    "label-location": "Location",
+    "label-notes": "Special Requests",
+    "btn-confirm-booking": "Confirm Booking",
+    "toast-success-title": "Thank you!",
+    "toast-success-desc": "Your reservation has been submitted successfully.",
+    "index-quick-booking": "Quick Booking:",
+    "index-people-placeholder": "Number of guests",
+    "index-location-placeholder": "Location",
+    "index-btn-book": "BOOK NOW",
+    "index-hero-title": "NĂBE - SHARED HOTPOT & BBQ",
+    "index-hero-desc": "A place to meet and have fun around steaming hotpots and aromatic BBQ.",
+    "index-hero-btn": "Book a Table",
+    "index-menu-title": "BENTO + SOUP + WATER",
+    "index-price-title": "HOW MUCH DOES IT COST?",
+    "index-price-subtitle": "FAIR PRICE.",
+    "index-price-li1": "ORDER FROM THE MENU BY ITEM",
+    "index-price-li2": "FOR GROUPS OF 12+ AND CORPORATE EVENTS, WE CAN PREPARE A SPECIAL OFFER AND MENU",
+    "index-price-li3": "AND YES, REFILLS OF BROTH, SAUCES, AND ICE CREAM ARE UNLIMITED"
+  },
+  vi: {
+    "nav-home": "Trang Chủ",
+    "nav-order": "Đặt Món",
+    "nav-reservation": "Đặt Bàn",
+    "nav-gallery": "Thư Viện Ảnh",
+    "nav-contact": "Liên Hệ",
+    "btn-book-table": "Đặt Bàn Ngay",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. BẢN QUYỀN ĐÃ ĐƯỢC BẢO HỘ.",
+    "footer-privacy": "Chính sách bảo mật",
+    "footer-terms": "Điều khoản dịch vụ",
+    "footer-careers": "Tuyển dụng",
+    "footer-press": "Thông cáo báo chí",
+    "mobile-nav-home": "TRANG CHỦ",
+    "mobile-nav-order": "ĐẶT MÓN",
+    "mobile-nav-book": "ĐẶT BÀN",
+    "modal-booking-title": "Đặt bàn",
+    "modal-booking-subtitle": "Vui lòng điền thông tin để đặt bàn tại NABE. Chúng tôi sẽ liên hệ sớm nhất để xác nhận.",
+    "label-name": "Họ và Tên",
+    "label-phone": "Số Điện Thoại",
+    "label-guests": "Số lượng khách",
+    "label-datetime": "Ngày giờ đặt",
+    "label-location": "Chi nhánh",
+    "label-notes": "Yêu cầu đặc biệt",
+    "btn-confirm-booking": "Xác nhận đặt bàn",
+    "toast-success-title": "Xin cảm ơn!",
+    "toast-success-desc": "Yêu cầu đặt bàn đã gửi thành công.",
+    "index-quick-booking": "Đặt bàn nhanh:",
+    "index-people-placeholder": "Số lượng khách",
+    "index-location-placeholder": "Chi nhánh",
+    "index-btn-book": "ĐẶT BÀN NGAY",
+    "index-hero-title": "NĂBE - LẨU & NƯỚNG SUM VẦY",
+    "index-hero-desc": "Nơi tụ họp vui vẻ bên nồi lẩu nóng hổi nghi ngút khói và đồ nướng BBQ thơm lừng.",
+    "index-hero-btn": "Đặt bàn ngay",
+    "index-menu-title": "BENTO + SÚP + NƯỚC UỐNG",
+    "index-price-title": "GIÁ CẢ NHƯ THẾ NÀO?",
+    "index-price-subtitle": "GIÁ HỢP LÝ.",
+    "index-price-li1": "GỌI MÓN THEO THỰC ĐƠN TỪNG PHẦN",
+    "index-price-li2": "VỚI ĐOÀN KHÁCH 12+ HOẶC TIỆC CÔNG TY, CHÚNG TÔI CÓ THỂ CHUẨN BỊ THỰC ĐƠN VÀ ƯU ĐÃI RIÊNG",
+    "index-price-li3": "VÀ ĐÚNG VẬY, THÊM NƯỚC LẨU, NƯỚC SỐT VÀ KEM LÀ KHÔNG GIỚI HẠN"
+  }
+};
+
+window.changeLanguage = function(lang) {
+  localStorage.setItem('selectedLanguage', lang);
+  applyTranslations(lang);
+};
+
+function applyTranslations(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      } else {
+        el.innerText = translations[lang][key];
+      }
+    }
+  });
+  
+  // Highlight active active-lang-label in navbar dropdown
+  const labels = { pl: 'POLSKI', en: 'ENGLISH', vi: 'TIẾNG VIỆT' };
+  const labelEl = document.getElementById('active-lang-label');
+  if (labelEl) {
+    labelEl.innerText = labels[lang] || 'POLSKI';
+  }
+  
+  // Sync page elements or dropdown style
+  const options = document.querySelectorAll('#lang-dropdown-menu button');
+  options.forEach(opt => {
+    if (opt.getAttribute('onclick').includes(lang)) {
+      opt.classList.add('text-social-teal');
+    } else {
+      opt.classList.remove('text-social-teal');
+    }
+  });
+}
+
+// ==========================================
+// RESERVATION MODAL
+// ==========================================
+window.openBookingModal = function() {
+  document.getElementById('booking-modal').classList.remove('hidden');
+};
+
+window.closeBookingModal = function() {
+  document.getElementById('booking-modal').classList.add('hidden');
+};
+
+window.submitBookingForm = function(event) {
+  event.preventDefault();
+  closeBookingModal();
+  showToastNotification();
+  
+  // Clear form
+  document.getElementById('modal-booking-form').reset();
+};
+
+function showToastNotification() {
+  const toast = document.getElementById('toast-notification');
+  toast.classList.remove('hidden');
+  setTimeout(() => {
+    toast.classList.remove('opacity-0', 'translate-y-[-20px]');
+  }, 50);
+  
+  setTimeout(() => {
+    toast.classList.add('opacity-0', 'translate-y-[-20px]');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 300);
+  }, 4000);
+}
+
+// Close modal when clicking outside form
+document.getElementById('booking-modal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeBookingModal();
+  }
+});
+
+// ==========================================
+// INITIAL SETUP
+// ==========================================
+window.navigateToPage = function(url) {
+  document.body.classList.remove('page-loaded');
+  setTimeout(() => {
+    window.location.href = url;
+  }, 350);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Language from storage or default to PL
+  const savedLang = localStorage.getItem('selectedLanguage') || 'pl';
+  changeLanguage(savedLang);
+  
+  // Close language menu on clicking outside if clicked on mobile
+  const langSelectBtn = document.getElementById('lang-select-btn');
+  const langMenu = document.getElementById('lang-dropdown-menu');
+  if (langSelectBtn && langMenu) {
+    langSelectBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => {
+      langMenu.classList.add('hidden');
+    });
+  }
+
+  // Smooth page loading transition
+  document.body.classList.add('page-loaded');
+
+  // Intercept clicks on links for smooth fadeout transition
+  document.querySelectorAll('a').forEach(link => {
+    if (
+      link.hostname === window.location.hostname &&
+      link.pathname &&
+      !link.hash &&
+      link.getAttribute('href') !== '#' &&
+      link.target !== '_blank'
+    ) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const destination = link.href;
+        navigateToPage(destination);
+      });
+    }
+  });
+});
+</script>
 </body></html>

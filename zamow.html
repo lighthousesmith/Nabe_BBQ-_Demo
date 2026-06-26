@@ -115,6 +115,16 @@
             color: #7dd3fc !important;
             border-bottom: 3px solid #7dd3fc;
         }
+        html {
+            background-color: #1d100e !important;
+        }
+        body {
+            opacity: 0;
+            transition: opacity 0.35s ease-in-out;
+        }
+        body.page-loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background antialiased flex flex-col h-screen overflow-hidden">
@@ -125,19 +135,33 @@
 <img alt="NABE Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmBpyt6w8uqdNTQZbRsO0Dgl0vnIpxd2p-p-MiD4KrDXvXzlZcRLc93RObwS1qbnxOuByoSDThkxPvcQg1UrI5Wqgb_MVZRoyF-ANdTrc4v94GIKBqWLHwsHs46U0na1C41Qmq1VigIiZ_A3lillG17KRK93OEJzjfisU9OIwzjPQlYpZrdYSC2XNDxHXaixjpkPZXT5gD0fAIwmj6PcMuyR-sXBkgnR0Nuqlp_mgF9XVtohUfikjWSnqUkudIvsWPRxg"/>
 </a>
 <div class="hidden lg:flex items-center gap-8">
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="index.html">Strona Główna</a>
-<a class="active-nav-item font-bold pb-1" href="zamow.html">Zamów</a>
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Rezerwacja</a>
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Galeria</a>
-<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Kontakt</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="index.html" data-i18n="nav-home">Strona Główna</a>
+<a class="active-nav-item font-bold pb-1" href="zamow.html" data-i18n="nav-order">Zamów</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#" onclick="document.getElementById('sidebar-booking-form')?.scrollIntoView({behavior: 'smooth'}); document.getElementById('sidebar-booking-datetime')?.focus();" data-i18n="nav-reservation">Rezerwacja</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="galeria.html" data-i18n="nav-gallery">Galeria</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#" data-i18n="nav-contact">Kontakt</a>
 </div>
 </div>
 <div class="flex items-center gap-6">
-<div class="hidden sm:flex items-center gap-2 text-vintage-cream cursor-pointer">
-<span class="material-symbols-outlined text-xl">language</span>
-<span class="text-sm font-bold">POLSKI</span>
+<div class="relative group" id="lang-dropdown-container">
+  <button id="lang-select-btn" class="flex items-center gap-2 text-vintage-cream hover:text-social-teal transition-colors focus:outline-none py-2">
+    <span class="material-symbols-outlined text-xl">language</span>
+    <span id="active-lang-label" class="text-sm font-bold tracking-wider">POLSKI</span>
+    <span class="material-symbols-outlined text-xs transition-transform duration-200 group-hover:rotate-180">keyboard_arrow_down</span>
+  </button>
+  <div id="lang-dropdown-menu" class="absolute right-0 mt-1 w-40 bg-surface-container border border-surface-variant rounded-sm shadow-xl hidden group-hover:flex flex-col z-50">
+    <button onclick="changeLanguage('pl')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+      <span>🇵🇱</span> POLSKI
+    </button>
+    <button onclick="changeLanguage('en')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+      <span>🇬🇧</span> ENGLISH
+    </button>
+    <button onclick="changeLanguage('vi')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream transition-colors">
+      <span>🇻🇳</span> TIẾNG VIỆT
+    </button>
+  </div>
 </div>
-<button class="bg-social-teal text-background font-bold px-6 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase text-sm tracking-tight">
+<button onclick="document.getElementById('sidebar-booking-form')?.scrollIntoView({behavior: 'smooth'}); document.getElementById('sidebar-booking-datetime')?.focus();" data-i18n="btn-book-table" class="bg-social-teal text-background font-bold px-6 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase text-sm tracking-tight">
             Zarezerwuj stolik
         </button>
 </div>
@@ -146,29 +170,29 @@
 <!-- Left Column: KATEGORIE -->
 <aside class="w-72 border-r border-surface-variant flex flex-col shrink-0 bg-surface-container-lowest">
 <div class="p-6">
-<h2 class="text-hot-red text-2xl uppercase tracking-wider mb-1">KATEGORIE</h2>
-<p class="text-on-surface-variant text-xs font-medium uppercase tracking-widest opacity-60">Menu BBQ</p>
+<h2 class="text-hot-red text-2xl uppercase tracking-wider mb-1" data-i18n="order-sidebar-title">KATEGORIE</h2>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-widest opacity-60" data-i18n="order-sidebar-subtitle">Menu BBQ</p>
 </div>
 <nav class="flex-1 overflow-y-auto px-2 space-y-1">
 <button data-category="wolowina" class="category-btn w-full flex items-center gap-4 px-4 py-4 bg-surface-variant text-social-teal border-l-4 border-social-teal transition-all">
 <span class="material-symbols-outlined symbol-filled">restaurant</span>
-<span class="font-bold uppercase tracking-tight">Wołowina</span>
+<span class="font-bold uppercase tracking-tight" data-i18n="cat-wolowina">Wołowina</span>
 </button>
 <button data-category="drob" class="category-btn w-full flex items-center gap-4 px-4 py-4 text-on-surface-variant hover:bg-surface-container transition-all border-l-4 border-transparent hover:border-surface-variant">
 <span class="material-symbols-outlined">egg</span>
-<span class="font-bold uppercase tracking-tight">Drób</span>
+<span class="font-bold uppercase tracking-tight" data-i18n="cat-drob">Drób</span>
 </button>
 <button data-category="kielbaski" class="category-btn w-full flex items-center gap-4 px-4 py-4 text-on-surface-variant hover:bg-surface-container transition-all border-l-4 border-transparent hover:border-surface-variant">
 <span class="material-symbols-outlined">kebab_dining</span>
-<span class="font-bold uppercase tracking-tight">Kiełbaski</span>
+<span class="font-bold uppercase tracking-tight" data-i18n="cat-kielbaski">Kiełbaski</span>
 </button>
 <button data-category="owoce-morza" class="category-btn w-full flex items-center gap-4 px-4 py-4 text-on-surface-variant hover:bg-surface-container transition-all border-l-4 border-transparent hover:border-surface-variant">
 <span class="material-symbols-outlined">set_meal</span>
-<span class="font-bold uppercase tracking-tight">Owoce morza</span>
+<span class="font-bold uppercase tracking-tight" data-i18n="cat-owoce-morza">Owoce morza</span>
 </button>
 <button data-category="warzywa" class="category-btn w-full flex items-center gap-4 px-4 py-4 text-on-surface-variant hover:bg-surface-container transition-all border-l-4 border-transparent hover:border-surface-variant">
 <span class="material-symbols-outlined">eco</span>
-<span class="font-bold uppercase tracking-tight">Warzywa</span>
+<span class="font-bold uppercase tracking-tight" data-i18n="cat-warzywa">Warzywa</span>
 </button>
 </nav>
 </aside>
@@ -178,7 +202,7 @@
 <div class="flex items-center justify-between mb-10 border-b border-surface-variant pb-6">
 <h1 id="category-title" class="text-5xl lg:text-6xl text-vintage-cream uppercase m-0 leading-none">Wołowina</h1>
 <div class="flex gap-3">
-<span class="px-3 py-1 border border-social-teal text-social-teal text-[10px] font-bold uppercase tracking-widest">Selekcja Premium</span>
+<span class="px-3 py-1 border border-social-teal text-social-teal text-[10px] font-bold uppercase tracking-widest" data-i18n="order-title-select">Selekcja Premium</span>
 </div>
 </div>
 <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -240,7 +264,7 @@
 <aside class="w-80 border-l border-surface-variant flex flex-col shrink-0 bg-surface-container-high">
 <div id="cart-section" class="flex flex-col flex-1 min-h-0 overflow-hidden hidden">
 <div class="p-6 border-b border-surface-variant">
-<h2 class="text-social-teal text-3xl uppercase leading-none mb-1">KOSZYK</h2>
+<h2 class="text-social-teal text-3xl uppercase leading-none mb-1" data-i18n="order-cart-title">KOSZYK</h2>
 <p id="cart-summary-text" class="text-on-surface-variant text-xs uppercase tracking-widest opacity-60">0 PRZEDMIOTÓW</p>
 </div>
 <!-- Cart List -->
@@ -250,15 +274,15 @@
 </div>
 <div class="pt-4 border-t border-surface-variant space-y-1 shrink-0">
 <div class="flex justify-between text-xs text-on-surface-variant">
-<span>Suma częściowa</span>
+<span data-i18n="order-cart-subtotal">Suma częściowa</span>
 <span id="cart-subtotal">0.00 PLN</span>
 </div>
 <div class="flex justify-between text-xs text-on-surface-variant">
-<span>VAT (8%)</span>
+<span data-i18n="order-cart-vat">VAT (8%)</span>
 <span id="cart-vat">0.00 PLN</span>
 </div>
 <div class="flex justify-between text-xl font-headline text-social-teal pt-2">
-<span>RAZEM</span>
+<span data-i18n="order-cart-total">RAZEM</span>
 <span id="cart-total">0.00 PLN</span>
 </div>
 </div>
@@ -268,28 +292,106 @@
 <div class="p-6 bg-surface-container border-t border-surface-variant">
 <h3 class="text-xs font-bold text-vintage-cream uppercase tracking-widest mb-4 flex items-center gap-2">
 <span class="material-symbols-outlined text-sm">event_seat</span> 
-                Dane rezerwacji
+                <span data-i18n="order-sidebar-booking-title">Dane rezerwacji</span>
             </h3>
-<form class="space-y-3">
+<form class="space-y-3" id="sidebar-booking-form" onsubmit="submitSidebarBooking(event)">
 <div class="relative">
 <span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-sm">schedule</span>
-<input class="w-full bg-background border border-surface-variant rounded-sm pl-10 pr-3 py-2 text-xs focus:border-social-teal outline-none transition-colors" placeholder="Data i Godzina" type="text"/>
+<input required class="w-full bg-background border border-surface-variant rounded-sm pl-10 pr-3 py-2 text-xs focus:border-social-teal outline-none transition-colors" data-i18n="ph-datetime" placeholder="Data i Godzina" type="text" id="sidebar-booking-datetime"/>
 </div>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-sm">group</span>
-<input class="w-full bg-background border border-surface-variant rounded-sm pl-10 pr-3 py-2 text-xs focus:border-social-teal outline-none transition-colors" placeholder="Liczba Osób" type="number"/>
+<input required class="w-full bg-background border border-surface-variant rounded-sm pl-10 pr-3 py-2 text-xs focus:border-social-teal outline-none transition-colors" data-i18n="ph-guests" placeholder="Liczba Osób" type="number" id="sidebar-booking-guests"/>
 </div>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-sm">phone</span>
-<input class="w-full bg-background border border-surface-variant rounded-sm pl-10 pr-3 py-2 text-xs focus:border-social-teal outline-none transition-colors" placeholder="Numer Telefonu" type="tel"/>
+<input required class="w-full bg-background border border-surface-variant rounded-sm pl-10 pr-3 py-2 text-xs focus:border-social-teal outline-none transition-colors" data-i18n="ph-phone" placeholder="Numer Telefonu" type="tel" id="sidebar-booking-phone"/>
 </div>
-</form>
-<button class="w-full mt-6 bg-social-teal text-background font-bold py-4 uppercase tracking-widest text-sm rounded-sm hover:brightness-110 active:scale-95 transition-all shadow-lg">
+<button type="submit" data-i18n="order-sidebar-booking-btn" class="w-full mt-6 bg-social-teal text-background font-bold py-4 uppercase tracking-widest text-sm rounded-sm hover:brightness-110 active:scale-95 transition-all shadow-lg">
                 Potwierdź Rezerwację
             </button>
-</div>
+        </form>
+    </div>
 </aside>
 </div>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-black p-stack-lg shrink-0">
+  <div class="flex flex-col md:flex-row justify-between items-start gap-gutter max-w-7xl mx-auto px-gutter lg:px-12">
+    <div class="flex flex-col gap-stack-sm">
+      <span class="font-headline text-2xl text-social-teal uppercase tracking-tighter">NĀBE</span>
+      <p class="text-xs text-vintage-cream dark:text-on-surface opacity-70" data-i18n="footer-desc">© 2024 NĀBE HOTPOT &amp; BBQ. WSZELKIE PRAWA ZASTRZEŻONE.</p>
+    </div>
+    <nav class="flex flex-col md:flex-row gap-stack-md md:gap-gutter">
+      <a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-privacy">Polityka Prywatności</a>
+      <a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-terms">Regulamin</a>
+      <a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-careers">Kariera</a>
+      <a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-press">Materiały Prasowe</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Reservation Modal -->
+<div id="booking-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] hidden backdrop-blur-sm p-4">
+  <div class="bg-surface-container border-2 border-social-teal w-full max-w-lg p-8 relative shadow-2xl animate-fade-in">
+    <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-on-surface-variant hover:text-social-teal transition-colors">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <h3 class="font-headline text-3xl text-social-teal uppercase mb-2" data-i18n="modal-booking-title">Rezerwacja stolika</h3>
+    <p class="font-body-md text-sm text-on-surface-variant mb-6" data-i18n="modal-booking-subtitle">Wypełnij formularz, aby zarezerwować stolik w NABE. Skontaktujemy się, aby potwierdzić rezerwację.</p>
+    <form id="modal-booking-form" class="space-y-4" onsubmit="submitBookingForm(event)">
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-name">Imię i Nazwisko</label>
+        <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" placeholder="Jan Kowalski" type="text" id="booking-name"/>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-phone">Numer Telefonu</label>
+          <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" placeholder="+48 123 456 789" type="tel" id="booking-phone"/>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-guests">Liczba osób</label>
+          <select required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" id="booking-guests">
+            <option value="1-2">1-2 osoby</option>
+            <option value="3-4">3-4 osoby</option>
+            <option value="5-6">5-6 osób</option>
+            <option value="7+">7+ osób</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-datetime">Data i Godzina</label>
+          <input required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" type="datetime-local" id="booking-datetime"/>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-location">Lokalizacja</label>
+          <select required class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream" id="booking-location">
+            <option value="Warszawa Centrum">Warszawa Centrum</option>
+            <option value="Kraków Kazimierz">Kraków Kazimierz</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-vintage-cream mb-1" data-i18n="label-notes">Specjalne życzenia</label>
+        <textarea class="w-full bg-background border border-surface-variant p-3 text-sm focus:border-social-teal outline-none transition-colors text-vintage-cream h-20 resize-none" placeholder="np. stolik przy oknie" id="booking-notes"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-social-teal text-background font-bold py-3 uppercase tracking-widest text-sm hover:brightness-110 active:scale-95 transition-all shadow-lg" data-i18n="btn-confirm-booking">
+        Potwierdź Rezerwację
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Success Notification toast -->
+<div id="toast-notification" class="fixed top-4 right-4 bg-surface-container border-2 border-social-teal p-5 shadow-2xl flex items-center gap-4 z-[200] max-w-sm hidden transition-all duration-300 transform translate-y-[-20px] opacity-0">
+  <span class="material-symbols-outlined text-social-teal text-3xl">check_circle</span>
+  <div>
+    <h4 class="text-sm font-bold text-vintage-cream uppercase" data-i18n="toast-success-title">Dziękujemy!</h4>
+    <p class="text-xs text-on-surface-variant mt-1" data-i18n="toast-success-desc">Rezerwacja została przesłana pomyślnie.</p>
+  </div>
+</div>
+
 <script>
 // Product Database
 const products = [
@@ -383,8 +485,77 @@ const products = [
   }
 ];
 
+// Product translations map
+const productTranslations = {
+  kobe: {
+    pl: { name: 'Stek Kobe (A5)', description: 'Najwyższej klasy japońska wołowina o niesamowitym marmurkowatości, która rozpływa się w ustach.' },
+    en: { name: 'Kobe Steak (A5)', description: 'Top-tier Japanese beef with incredible marbling that melts in your mouth.' },
+    vi: { name: 'Bò Bít Tết Kobe (A5)', description: 'Thịt bò Nhật Bản thượng hạng với những đường vân mỡ đan xen đều đặn, tan ngay trong miệng.' }
+  },
+  wagyu: {
+    pl: { name: 'Antrykot Wagyu', description: 'Perfekcyjnie wycięty antrykot, grillowany według Twoich upodobań z dodatkiem aromatycznego masła.' },
+    en: { name: 'Wagyu Ribeye', description: 'Perfectly cut ribeye, grilled to your preference with aromatic butter.' },
+    vi: { name: 'Thịt Thăn Lưng Wagyu', description: 'Phần thăn lưng cắt chuẩn, nướng theo sở thích với bơ thơm lừng.' }
+  },
+  poledwica: {
+    pl: { name: 'Polędwica Wołowa', description: 'Klasyczna, wyjątkowo chuda i delikatna polędwica z polskiej hodowli sezonowanej na sucho.' },
+    en: { name: 'Beef Tenderloin', description: 'Classic, exceptionally lean and tender tenderloin from dry-aged Polish beef.' },
+    vi: { name: 'Thăn Nội Bò', description: 'Thịt thăn nội nạc, siêu mềm từ bò Ba Lan ủ khô truyền thống.' }
+  },
+  szaszlyki: {
+    pl: { name: 'Szaszłyki Yakitori', description: 'Tradycyjne japońskie szaszłyki z kurczaka, grillowane z porem i glazurowane słodkim sosem tare.' },
+    en: { name: 'Yakitori Skewers', description: 'Traditional Japanese chicken skewers grilled with leek and glazed with sweet tare sauce.' },
+    vi: { name: 'Xiên Nướng Yakitori', description: 'Gà xiên que kiểu Nhật truyền thống nướng với hành tỏi và phủ sốt tare ngọt thơm.' }
+  },
+  kaczka: {
+    pl: { name: 'Pierś z Kaczki', description: 'Soczysta pierś z kaczki marynowana w trawie cytrynowej i pięciu smakach, idealna do przypieczenia na grillu.' },
+    en: { name: 'Duck Breast', description: 'Juicy duck breast marinated in lemongrass and five spices, perfect for grilling.' },
+    vi: { name: 'Ức Vịt Nướng', description: 'Ức vịt mọng nước ướp sả và ngũ vị hương thơm phức, thích hợp nướng xèo xèo.' }
+  },
+  chorizo: {
+    pl: { name: 'Pikantne Chorizo', description: 'Aromatyczne, lekko pikantne hiszpańskie kiełbaski z dodatkiem wędzonej papryki pimenton.' },
+    en: { name: 'Spicy Chorizo', description: 'Flavorful, slightly spicy Spanish sausages with smoked pimenton paprika.' },
+    vi: { name: 'Xúc Xích Chorizo Cay', description: 'Xúc xích Tây Ban Nha đậm vị, hơi cay nhẹ có vị ớt bột hun khói.' }
+  },
+  lamb: {
+    pl: { name: 'Kiełbaski Jagnięce', description: 'Tradycyjne kiełbaski z siekanej jagnięciny z dodatkiem ziół prowansalskich i czosnku.' },
+    en: { name: 'Lamb Sausages', description: 'Minced lamb sausages with garlic and provence herbs.' },
+    vi: { name: 'Xúc Xích Cừu', description: 'Xúc xích cừu xay nhỏ truyền thống trộn thảo mộc Pháp và tỏi thơm.' }
+  },
+  krewetki: {
+    pl: { name: 'Krewetki Tygrysie', description: 'Świeże, duże krewetki tygrysie w lekkiej marynacie czosnkowo-maślanej z dodatkiem chili.' },
+    en: { name: 'Tiger Prawns', description: 'Fresh, large tiger prawns in garlic butter marinade with chili.' },
+    vi: { name: 'Tôm Sú Cọp', description: 'Tôm sú tươi ngon loại lớn ướp tỏi bơ tơi xốp cùng một chút ớt.' }
+  },
+  losos: {
+    pl: { name: 'Stek z Łososia', description: 'Gruby krojony filet z łososia atlantyckiego, gotowy do grillowania na skórce.' },
+    en: { name: 'Salmon Steak', description: 'Atlantic salmon fillet steak, perfect for grilling skin-side down.' },
+    vi: { name: 'Cá Hồi Áp Chảo/Nướng', description: 'Cắt lát dày phi lê cá hồi Đại Tây Dương ngon béo, sẵn sàng nướng da giòn.' }
+  },
+  shiitake: {
+    pl: { name: 'Grzyby Shiitake', description: 'Azjatyckie grzyby shiitake o głębokim smaku umami, skropione olejem sezamowym.' },
+    en: { name: 'Shiitake Mushrooms', description: 'Asian shiitake mushrooms with rich umami flavor and sesame oil.' },
+    vi: { name: 'Nấm Shiitake', description: 'Nấm hương châu Á với hương vị umami đậm đà, rưới thêm dầu mè.' }
+  },
+  'warzywa-grill': {
+    pl: { name: 'Zestaw Warzyw', description: 'Kolorowy zestaw na grill: cukinia, bakłażan, papryka, kukurydza i czerwona cebula.' },
+    en: { name: 'Vegetable Set', description: 'Zucchini, eggplant, bell peppers, sweet corn, and red onion.' },
+    vi: { name: 'Khay Rau Củ Thập Cẩm', description: 'Khay rau củ tươi nướng: bí ngòi, cà tím, ớt chuông, ngô ngọt và hành tây đỏ.' }
+  }
+};
+
+// Category translations
+const categoryNames = {
+  wolowina: { pl: 'Wołowina', en: 'Beef', vi: 'Thịt Bò' },
+  drob: { pl: 'Drób', en: 'Poultry', vi: 'Thịt Gia Cầm' },
+  kielbaski: { pl: 'Kiełbaski', en: 'Sausages', vi: 'Xúc Xích' },
+  'owoce-morza': { pl: 'Owoce morza', en: 'Seafood', vi: 'Hải Sản' },
+  warzywa: { pl: 'Warzywa', en: 'Vegetables', vi: 'Rau Củ' }
+};
+
 // Initial Cart State
 let cart = [];
+let activeCategory = 'wolowina';
 
 // DOM elements
 const categoryTitle = document.getElementById('category-title');
@@ -395,18 +566,11 @@ const cartSubtotal = document.getElementById('cart-subtotal');
 const cartVat = document.getElementById('cart-vat');
 const cartTotal = document.getElementById('cart-total');
 
-// Category translations
-const categoryNames = {
-  wolowina: 'Wołowina',
-  drob: 'Drób',
-  kielbaski: 'Kiełbaski',
-  'owoce-morza': 'Owoce morza',
-  warzywa: 'Warzywa'
-};
-
 // Function to render products for a selected category
 function renderProducts(category) {
+  activeCategory = category;
   const filtered = products.filter(p => p.category === category);
+  const lang = localStorage.getItem('selectedLanguage') || 'pl';
   
   if (filtered.length === 0) {
     productGrid.innerHTML = `
@@ -418,24 +582,31 @@ function renderProducts(category) {
     return;
   }
 
-  productGrid.innerHTML = filtered.map(p => `
-    <div class="bg-surface-container border border-surface-variant hover:border-social-teal/50 transition-colors flex flex-col group shadow-xl">
-      <div class="h-60 overflow-hidden relative">
-        <img alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${p.image}">
-        <div class="absolute top-4 right-4 bg-background px-3 py-1 text-social-teal font-headline text-xl border border-social-teal shadow-lg">
-          ${p.price} PLN
+  productGrid.innerHTML = filtered.map(p => {
+    const translatedName = (productTranslations[p.id] && productTranslations[p.id][lang]) ? productTranslations[p.id][lang].name : p.name;
+    const translatedDesc = (productTranslations[p.id] && productTranslations[p.id][lang]) ? productTranslations[p.id][lang].description : p.description;
+    const btnTexts = { pl: 'Dodaj do koszyka', en: 'Add to cart', vi: 'Thêm vào giỏ' };
+    const btnText = btnTexts[lang] || 'Dodaj do koszyka';
+
+    return `
+      <div class="bg-surface-container border border-surface-variant hover:border-social-teal/50 transition-colors flex flex-col group shadow-xl">
+        <div class="h-60 overflow-hidden relative">
+          <img alt="${translatedName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${p.image}">
+          <div class="absolute top-4 right-4 bg-background px-3 py-1 text-social-teal font-headline text-xl border border-social-teal shadow-lg">
+            ${p.price} PLN
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col">
+          <h3 class="text-2xl text-vintage-cream mb-2 uppercase">${translatedName}</h3>
+          <p class="text-on-surface-variant text-sm mb-6 flex-1">${translatedDesc}</p>
+          <button onclick="addToCart('${p.id}')" class="w-full py-3 bg-hot-red text-white font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-colors flex items-center justify-center gap-2 relative">
+            <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+            ${btnText}
+          </button>
         </div>
       </div>
-      <div class="p-6 flex-1 flex flex-col">
-        <h3 class="text-2xl text-vintage-cream mb-2 uppercase">${p.name}</h3>
-        <p class="text-on-surface-variant text-sm mb-6 flex-1">${p.description}</p>
-        <button onclick="addToCart('${p.id}')" class="w-full py-3 bg-hot-red text-white font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
-          <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
-          Dodaj do koszyka
-        </button>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 // Function to render Cart
@@ -447,26 +618,42 @@ function renderCart() {
   }
   cartSection.classList.remove('hidden');
 
+  const lang = localStorage.getItem('selectedLanguage') || 'pl';
   const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-  cartSummaryText.innerText = `${totalQty} ${totalQty === 1 ? 'PRZEDMIOT' : totalQty >= 2 && totalQty <= 4 ? 'PRZEDMIOTY' : 'PRZEDMIOTÓW'}`;
+  
+  let summaryText = '';
+  if (lang === 'pl') {
+    summaryText = `${totalQty} ${totalQty === 1 ? 'PRZEDMIOT' : totalQty >= 2 && totalQty <= 4 ? 'PRZEDMIOTY' : 'PRZEDMIOTÓW'}`;
+  } else if (lang === 'vi') {
+    summaryText = `${totalQty} MÓN ĂN`;
+  } else {
+    summaryText = `${totalQty} ${totalQty === 1 ? 'ITEM' : 'ITEMS'}`;
+  }
+  cartSummaryText.innerText = summaryText;
 
-  cartItemsContainer.innerHTML = cart.map(item => `
-    <div class="flex justify-between items-start gap-3 border-b border-surface-variant/30 pb-2">
-      <div class="flex-1">
-        <p class="text-sm font-bold text-vintage-cream uppercase">${item.name}</p>
-        <div class="flex items-center gap-2 mt-1">
-          <button onclick="changeQty('${item.id}', -1)" class="w-5 h-5 flex items-center justify-center bg-surface-variant hover:bg-social-teal/20 text-on-surface text-[10px]">-</button>
-          <span class="text-xs font-bold text-on-surface-variant">${item.qty}</span>
-          <button onclick="changeQty('${item.id}', 1)" class="w-5 h-5 flex items-center justify-center bg-surface-variant hover:bg-social-teal/20 text-on-surface text-[10px]">+</button>
-          <span class="text-[10px] text-on-surface-variant ml-2">x ${item.price} PLN</span>
+  cartItemsContainer.innerHTML = cart.map(item => {
+    const translatedName = (productTranslations[item.id] && productTranslations[item.id][lang]) ? productTranslations[item.id][lang].name : item.name;
+    const removeTexts = { pl: 'Usuń', en: 'Remove', vi: 'Xóa' };
+    const removeText = removeTexts[lang] || 'Usuń';
+
+    return `
+      <div class="flex justify-between items-start gap-3 border-b border-surface-variant/30 pb-2">
+        <div class="flex-1">
+          <p class="text-sm font-bold text-vintage-cream uppercase">${translatedName}</p>
+          <div class="flex items-center gap-2 mt-1">
+            <button onclick="changeQty('${item.id}', -1)" class="w-5 h-5 flex items-center justify-center bg-surface-variant hover:bg-social-teal/20 text-on-surface text-[10px]">-</button>
+            <span class="text-xs font-bold text-on-surface-variant">${item.qty}</span>
+            <button onclick="changeQty('${item.id}', 1)" class="w-5 h-5 flex items-center justify-center bg-surface-variant hover:bg-social-teal/20 text-on-surface text-[10px]">+</button>
+            <span class="text-[10px] text-on-surface-variant ml-2">x ${item.price} PLN</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="font-headline text-social-teal">${item.price * item.qty} PLN</p>
+          <button onclick="removeFromCart('${item.id}')" class="text-[9px] text-hot-red hover:underline mt-1">${removeText}</button>
         </div>
       </div>
-      <div class="text-right">
-        <p class="font-headline text-social-teal">${item.price * item.qty} PLN</p>
-        <button onclick="removeFromCart('${item.id}')" class="text-[9px] text-hot-red hover:underline mt-1">Usuń</button>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
   const vat = subtotal * 0.08;
@@ -502,7 +689,6 @@ window.addToCart = function(productId) {
     const btn = event.currentTarget;
     const ripple = document.createElement('div');
     ripple.className = 'absolute inset-0 bg-white/20 animate-ping pointer-events-none';
-    btn.style.position = 'relative';
     btn.appendChild(ripple);
     setTimeout(() => ripple.remove(), 500);
   }
@@ -543,8 +729,297 @@ document.querySelectorAll('.category-btn').forEach(btn => {
     if (icon) icon.classList.add('symbol-filled');
 
     // Update Title & Render
-    categoryTitle.innerText = categoryNames[cat] || 'Menu';
+    const lang = localStorage.getItem('selectedLanguage') || 'pl';
+    categoryTitle.innerText = (categoryNames[cat] && categoryNames[cat][lang]) ? categoryNames[cat][lang] : (categoryNames[cat] ? categoryNames[cat].pl : 'Menu');
     renderProducts(cat);
+  });
+});
+
+// ==========================================
+// TRANSLATION ENGINE (i18n)
+// ==========================================
+const translations = {
+  pl: {
+    "nav-home": "Strona Główna",
+    "nav-order": "Zamów",
+    "nav-reservation": "Rezerwacja",
+    "nav-gallery": "Galeria",
+    "nav-contact": "Kontakt",
+    "btn-book-table": "Zarezerwuj stolik",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. WSZELKIE PRAWA ZASTRZEŻONE.",
+    "footer-privacy": "Polityka Prywatności",
+    "footer-terms": "Regulamin",
+    "footer-careers": "Kariera",
+    "footer-press": "Materiały Prasowe",
+    "mobile-nav-home": "DOM",
+    "mobile-nav-order": "ZAMÓW",
+    "mobile-nav-book": "REZERWUJ",
+    "modal-booking-title": "Rezerwacja stolika",
+    "modal-booking-subtitle": "Wypełnij formularz, aby zarezerwować stolik w NABE. Skontaktujemy się, aby potwierdzić rezerwację.",
+    "label-name": "Imię i Nazwisko",
+    "label-phone": "Numer Telefonu",
+    "label-guests": "Liczba osób",
+    "label-datetime": "Data i Godzina",
+    "label-location": "Lokalizacja",
+    "label-notes": "Specjalne życzenia",
+    "btn-confirm-booking": "Potwierdź Rezerwację",
+    "toast-success-title": "Dziękujemy!",
+    "toast-success-desc": "Rezerwacja została przesłana pomyślnie.",
+    "order-sidebar-title": "KATEGORIE",
+    "order-sidebar-subtitle": "Menu BBQ",
+    "order-cart-title": "KOSZYK",
+    "order-cart-empty": "Twój koszyk jest pusty",
+    "order-cart-subtotal": "Suma częściowa",
+    "order-cart-vat": "VAT (8%)",
+    "order-cart-total": "RAZEM",
+    "order-cart-btn": "Złóż zamówienie",
+    "order-sidebar-booking-title": "Dane rezerwacji",
+    "order-sidebar-booking-btn": "Potwierdź Rezerwację",
+    "cat-wolowina": "Wołowina",
+    "cat-drob": "Drób",
+    "cat-kielbaski": "Kiełbaski",
+    "cat-owoce-morza": "Owoce morza",
+    "cat-warzywa": "Warzywa",
+    "ph-datetime": "Data i Godzina",
+    "ph-guests": "Liczba Osób",
+    "ph-phone": "Numer Telefonu",
+    "order-title-select": "Selekcja Premium"
+  },
+  en: {
+    "nav-home": "Home",
+    "nav-order": "Order",
+    "nav-reservation": "Reservations",
+    "nav-gallery": "Gallery",
+    "nav-contact": "Contact",
+    "btn-book-table": "Book a Table",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. ALL RIGHTS RESERVED.",
+    "footer-privacy": "Privacy Policy",
+    "footer-terms": "Terms of Service",
+    "footer-careers": "Careers",
+    "footer-press": "Press Materials",
+    "mobile-nav-home": "HOME",
+    "mobile-nav-order": "ORDER",
+    "mobile-nav-book": "BOOK",
+    "modal-booking-title": "Book a Table",
+    "modal-booking-subtitle": "Fill in the form to book a table at NABE. We will contact you to confirm.",
+    "label-name": "Full Name",
+    "label-phone": "Phone Number",
+    "label-guests": "Guests Count",
+    "label-datetime": "Date & Time",
+    "label-location": "Location",
+    "label-notes": "Special Requests",
+    "btn-confirm-booking": "Confirm Booking",
+    "toast-success-title": "Thank you!",
+    "toast-success-desc": "Your reservation has been submitted successfully.",
+    "order-sidebar-title": "CATEGORIES",
+    "order-sidebar-subtitle": "BBQ Menu",
+    "order-cart-title": "CART",
+    "order-cart-empty": "Your cart is empty",
+    "order-cart-subtotal": "Subtotal",
+    "order-cart-vat": "VAT (8%)",
+    "order-cart-total": "TOTAL",
+    "order-cart-btn": "Place Order",
+    "order-sidebar-booking-title": "Booking Info",
+    "order-sidebar-booking-btn": "Confirm Reservation",
+    "cat-wolowina": "Beef",
+    "cat-drob": "Poultry",
+    "cat-kielbaski": "Sausages",
+    "cat-owoce-morza": "Seafood",
+    "cat-warzywa": "Vegetables",
+    "ph-datetime": "Date and Time",
+    "ph-guests": "Number of Guests",
+    "ph-phone": "Phone Number",
+    "order-title-select": "Premium Selection"
+  },
+  vi: {
+    "nav-home": "Trang Chủ",
+    "nav-order": "Đặt Món",
+    "nav-reservation": "Đặt Bàn",
+    "nav-gallery": "Thư Viện Ảnh",
+    "nav-contact": "Liên Hệ",
+    "btn-book-table": "Đặt Bàn Ngay",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. BẢN QUYỀN ĐÃ ĐƯỢC BẢO HỘ.",
+    "footer-privacy": "Chính sách bảo mật",
+    "footer-terms": "Điều khoản dịch vụ",
+    "footer-careers": "Tuyển dụng",
+    "footer-press": "Thông cáo báo chí",
+    "mobile-nav-home": "TRANG CHỦ",
+    "mobile-nav-order": "ĐẶT MÓN",
+    "mobile-nav-book": "ĐẶT BÀN",
+    "modal-booking-title": "Đặt bàn",
+    "modal-booking-subtitle": "Vui lòng điền thông tin để đặt bàn tại NABE. Chúng tôi sẽ liên hệ sớm nhất để xác nhận.",
+    "label-name": "Họ và Tên",
+    "label-phone": "Số Điện Thoại",
+    "label-guests": "Số lượng khách",
+    "label-datetime": "Ngày giờ đặt",
+    "label-location": "Chi nhánh",
+    "label-notes": "Yêu cầu đặc biệt",
+    "btn-confirm-booking": "Xác nhận đặt bàn",
+    "toast-success-title": "Xin cảm ơn!",
+    "toast-success-desc": "Yêu cầu đặt bàn đã gửi thành công.",
+    "order-sidebar-title": "DANH MỤC",
+    "order-sidebar-subtitle": "Thực đơn BBQ",
+    "order-cart-title": "GIỎ HÀNG",
+    "order-cart-empty": "Giỏ hàng trống",
+    "order-cart-subtotal": "Tạm tính",
+    "order-cart-vat": "Thuế VAT (8%)",
+    "order-cart-total": "TỔNG CỘNG",
+    "order-cart-btn": "Đặt món",
+    "order-sidebar-booking-title": "Chi tiết đặt bàn",
+    "order-sidebar-booking-btn": "Xác nhận đặt bàn",
+    "cat-wolowina": "Thịt Bò",
+    "cat-drob": "Thịt Gia Cầm",
+    "cat-kielbaski": "Xúc Xích",
+    "cat-owoce-morza": "Hải Sản",
+    "cat-warzywa": "Rau Củ",
+    "ph-datetime": "Ngày và giờ",
+    "ph-guests": "Số lượng khách",
+    "ph-phone": "Số điện thoại",
+    "order-title-select": "Lựa Chọn Cao Cấp"
+  }
+};
+
+window.changeLanguage = function(lang) {
+  localStorage.setItem('selectedLanguage', lang);
+  applyTranslations(lang);
+  
+  // Re-render products and cart to update descriptions instantly
+  const cat = document.querySelector('.category-btn.bg-surface-variant')?.getAttribute('data-category') || activeCategory;
+  categoryTitle.innerText = (categoryNames[cat] && categoryNames[cat][lang]) ? categoryNames[cat][lang] : (categoryNames[cat] ? categoryNames[cat].pl : 'Menu');
+  renderProducts(cat);
+  renderCart();
+};
+
+function applyTranslations(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      } else {
+        el.innerText = translations[lang][key];
+      }
+    }
+  });
+
+  // Specifically handle inputs that might have placeholders using data-i18n value as placeholder key
+  document.querySelectorAll('input[placeholder][data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
+  
+  // Highlight active active-lang-label in navbar dropdown
+  const labels = { pl: 'POLSKI', en: 'ENGLISH', vi: 'TIẾNG VIỆT' };
+  const labelEl = document.getElementById('active-lang-label');
+  if (labelEl) {
+    labelEl.innerText = labels[lang] || 'POLSKI';
+  }
+  
+  // Sync page elements or dropdown style
+  const options = document.querySelectorAll('#lang-dropdown-menu button');
+  options.forEach(opt => {
+    if (opt.getAttribute('onclick').includes(lang)) {
+      opt.classList.add('text-social-teal');
+    } else {
+      opt.classList.remove('text-social-teal');
+    }
+  });
+}
+
+// ==========================================
+// RESERVATION MODAL & TOAST
+// ==========================================
+window.openBookingModal = function() {
+  document.getElementById('booking-modal').classList.remove('hidden');
+};
+
+window.closeBookingModal = function() {
+  document.getElementById('booking-modal').classList.add('hidden');
+};
+
+window.submitBookingForm = function(event) {
+  event.preventDefault();
+  closeBookingModal();
+  showToastNotification();
+  document.getElementById('modal-booking-form').reset();
+};
+
+window.submitSidebarBooking = function(event) {
+  event.preventDefault();
+  showToastNotification();
+  document.getElementById('sidebar-booking-form').reset();
+};
+
+function showToastNotification() {
+  const toast = document.getElementById('toast-notification');
+  toast.classList.remove('hidden');
+  setTimeout(() => {
+    toast.classList.remove('opacity-0', 'translate-y-[-20px]');
+  }, 50);
+  
+  setTimeout(() => {
+    toast.classList.add('opacity-0', 'translate-y-[-20px]');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 300);
+  }, 4000);
+}
+
+// Close modal when clicking outside form
+document.getElementById('booking-modal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeBookingModal();
+  }
+});
+
+// ==========================================
+// INITIAL SETUP
+// ==========================================
+window.navigateToPage = function(url) {
+  document.body.classList.remove('page-loaded');
+  setTimeout(() => {
+    window.location.href = url;
+  }, 350);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Language from storage or default to PL
+  const savedLang = localStorage.getItem('selectedLanguage') || 'pl';
+  changeLanguage(savedLang);
+  
+  // Close language menu on clicking outside if clicked on mobile
+  const langSelectBtn = document.getElementById('lang-select-btn');
+  const langMenu = document.getElementById('lang-dropdown-menu');
+  if (langSelectBtn && langMenu) {
+    langSelectBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => {
+      langMenu.classList.add('hidden');
+    });
+  }
+
+  // Smooth page loading transition
+  document.body.classList.add('page-loaded');
+
+  // Intercept clicks on links for smooth fadeout transition
+  document.querySelectorAll('a').forEach(link => {
+    if (
+      link.hostname === window.location.hostname &&
+      link.pathname &&
+      !link.hash &&
+      link.getAttribute('href') !== '#' &&
+      link.target !== '_blank'
+    ) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const destination = link.href;
+        navigateToPage(destination);
+      });
+    }
   });
 });
 
