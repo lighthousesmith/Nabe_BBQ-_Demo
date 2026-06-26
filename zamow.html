@@ -98,6 +98,10 @@
         }
     </script>
 <style>
+        .custom-border { border: 3px solid #FDF5E6; }
+        .custom-border-teal { border: 3px solid #7FCFD4; }
+        .section-divider { border-top: 4px solid #FDF5E6; }
+        select { background-image: none !important; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
@@ -123,24 +127,38 @@
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
-<!-- TopNavBar Shell -->
-<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-background border-b-4 border-hot-red">
-<div class="flex items-center gap-12">
-<a href="index.html" class="font-headline-lg text-hot-red tracking-tighter cursor-pointer">NABE</a>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="index.html">Strona Główna</a>
-<a class="text-social-teal border-b-2 border-social-teal pb-1 font-label-bold text-label-bold" href="zamow.html">Zamów</a>
-<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="#">Rezerwacja</a>
-<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="#">Galeria</a>
-<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="#">Kontakt</a>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-deep-maroon dark:bg-background border-b-4 border-social-teal">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-vintage-cream flex items-center gap-4">
+<a href="index.html" class="flex items-center gap-4">
+<img alt="NĀBE Logo" class="h-12 w-auto object-contain hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGMhcNgAJff0xLO8zo0x0DAvGBAIxKX8dH1w9S2ZHacNKTd678Yvdl1wqeRCRla1JuAz4DtLY1D5MetwiGAx6uAYEt7UwVV-RL7F89MZwrfN79Qb2yteAvFgV7LdaTNlHWWRw2v1qrfIwqPDsph095ryinlwWKyEv5aR37zxEq_23EElIRL4ZUsZfh9w_HOEDQ_D9LiBOxZZyU4b9lXLACfKyyZmIiHGcn7PBJdp_ELGdKQUnwKmSp6XTG1DSvhaPcQPM"/>
+<span>NĀBE</span>
+</a>
 </div>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-on-surface p-2 hover:bg-surface-variant rounded-full transition-all">language</button>
-<button class="hidden md:block px-6 py-2 border-2 border-social-teal text-social-teal font-label-bold hover:bg-social-teal hover:text-background transition-all active:scale-95 duration-100">Login</button>
-<button class="px-6 py-2 bg-social-teal text-background font-label-bold border-2 border-social-teal hover:bg-transparent hover:text-social-teal transition-all active:scale-95 duration-100">ZAREZERWUJ STOLIK</button>
+<nav class="hidden lg:flex gap-6 items-center">
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="index.html">Strona Główna</a>
+<a class="font-label-bold text-label-bold text-social-teal font-bold border-b-2 border-social-teal pb-1" href="zamow.html">Zamów</a>
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Rezerwacja</a>
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Galeria</a>
+<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Kontakt</a>
+<div class="flex items-center gap-2 ml-4">
+<span class="material-symbols-outlined text-vintage-cream text-lg">language</span>
+<select class="bg-transparent text-vintage-cream font-label-bold text-sm border-none focus:ring-0 cursor-pointer p-0">
+<option class="bg-surface text-white" selected="" value="pl">Polski</option>
+<option class="bg-surface text-white" value="en">Angielski</option>
+</select>
 </div>
 </nav>
+<div class="flex items-center gap-4">
+<button class="text-vintage-cream font-label-bold text-label-bold hover:text-social-teal transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined">person</span>
+                Zaloguj się
+            </button>
+<button class="bg-social-teal text-black font-label-bold text-label-bold px-4 py-2 md:px-6 md:py-3 uppercase tracking-wider custom-border hover:bg-vintage-cream transition-colors text-xs md:text-label-bold">Zarezerwuj Stolik</button>
+</div>
+</div>
+</header>
 <main class="pt-20 flex min-h-screen">
 <!-- SideNavBar Shell -->
 <aside class="fixed left-0 top-20 bottom-0 flex flex-col p-stack-sm bg-surface-container border-r-4 border-hot-red w-64 hidden lg:flex z-40">

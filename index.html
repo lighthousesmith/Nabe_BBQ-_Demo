@@ -114,11 +114,13 @@
 <header class="bg-deep-maroon dark:bg-background full-width top-0 sticky z-50 border-b-4 border-social-teal">
 <div class="flex justify-between items-center px-margin-desktop py-4 w-full">
 <div class="font-headline-lg text-headline-lg tracking-tighter text-vintage-cream flex items-center gap-4">
+<a href="index.html" class="flex items-center gap-4">
 <img alt="NĀBE Logo" class="h-12 w-auto object-contain hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGMhcNgAJff0xLO8zo0x0DAvGBAIxKX8dH1w9S2ZHacNKTd678Yvdl1wqeRCRla1JuAz4DtLY1D5MetwiGAx6uAYEt7UwVV-RL7F89MZwrfN79Qb2yteAvFgV7LdaTNlHWWRw2v1qrfIwqPDsph095ryinlwWKyEv5aR37zxEq_23EElIRL4ZUsZfh9w_HOEDQ_D9LiBOxZZyU4b9lXLACfKyyZmIiHGcn7PBJdp_ELGdKQUnwKmSp6XTG1DSvhaPcQPM"/>
 <span>NĀBE</span>
+</a>
 </div>
 <nav class="hidden lg:flex gap-6 items-center">
-<a class="font-label-bold text-label-bold text-social-teal font-bold border-b-2 border-social-teal pb-1" href="#">Strona Główna</a>
+<a class="font-label-bold text-label-bold text-social-teal font-bold border-b-2 border-social-teal pb-1" href="index.html">Strona Główna</a>
 <a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="zamow.html">Zamów</a>
 <a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Rezerwacja</a>
 <a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Galeria</a>
@@ -361,5 +363,24 @@
 <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-social-teal underline transition-colors" href="#">Materiały Prasowe</a>
 </nav>
 </div>
-</footer>
+<!-- Mobile Bottom Navigation (Shell Implementation) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-background border-t border-hot-red flex justify-around items-center h-16 z-50">
+<a href="index.html" class="flex flex-col items-center gap-1 text-social-teal">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-label-bold">DOM</span>
+</a>
+<a href="zamow.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">restaurant_menu</span>
+<span class="text-[10px] font-label-bold">ZAMÓW</span>
+</a>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-label-bold">REZERWUJ</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-label-bold">KOSZYK</span>
+</button>
+</nav>
+
 </body></html>
