@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="dark" lang="pl" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NABE - BBQ &amp; Social Dining</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "hot-red": "#B30000",
+                        "tertiary-fixed": "#a0f0f5",
+                        "on-surface": "#f7ddd8",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#83d3d9",
+                        "surface-container-lowest": "#170b09",
+                        "secondary": "#cdc6b8",
+                        "on-secondary-fixed": "#1e1b13",
+                        "on-primary-fixed": "#410000",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "outline-variant": "#5a413d",
+                        "background": "#1d100e",
+                        "on-surface-variant": "#e2bfb9",
+                        "on-primary-container": "#ff8371",
+                        "primary-fixed": "#ffdad4",
+                        "on-secondary-container": "#beb8aa",
+                        "on-tertiary": "#003739",
+                        "surface-container": "#2a1c1a",
+                        "surface-tint": "#ffb4a8",
+                        "surface-container-low": "#261816",
+                        "outline": "#a98984",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#343026",
+                        "surface": "#1d100e",
+                        "on-secondary-fixed-variant": "#4b463c",
+                        "inverse-on-surface": "#3d2d2a",
+                        "secondary-container": "#4d493e",
+                        "on-primary": "#690000",
+                        "on-tertiary-container": "#63b4b9",
+                        "secondary-fixed": "#e9e2d3",
+                        "surface-bright": "#463533",
+                        "on-tertiary-fixed-variant": "#004f53",
+                        "social-teal": "#7FCFD4",
+                        "surface-variant": "#41312e",
+                        "on-background": "#f7ddd8",
+                        "tertiary-container": "#004447",
+                        "on-tertiary-fixed": "#002021",
+                        "error": "#ffb4ab",
+                        "primary": "#ffb4a8",
+                        "vintage-cream": "#FDF5E6",
+                        "on-error": "#690005",
+                        "tertiary": "#83d3d9",
+                        "inverse-surface": "#f7ddd8",
+                        "surface-container-high": "#362624",
+                        "surface-container-highest": "#41312e",
+                        "inverse-primary": "#b22b1d",
+                        "surface-dim": "#1d100e",
+                        "deep-maroon": "#4A0000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "1.25rem",
+                        "stack-md": "1.5rem",
+                        "stack-lg": "3rem",
+                        "stack-xs": "0.25rem",
+                        "stack-sm": "0.75rem",
+                        "gutter": "1rem",
+                        "margin-desktop": "5rem"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Anton"],
+                        "price-display": ["Anton"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Anton"],
+                        "headline-lg": ["Anton"],
+                        "label-bold": ["Space Grotesk"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "price-display": ["24px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-border { position: relative; }
+        .active-nav-border::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #B30000;
+        }
+        .hard-shadow {
+            box-shadow: 4px 4px 0px 0px #7FCFD4;
+        }
+        .bg-gradient-overlay {
+            background: linear-gradient(to top, rgba(29, 16, 14, 1) 0%, rgba(29, 16, 14, 0) 100%);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1d100e; }
+        ::-webkit-scrollbar-thumb { background: #41312e; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-background border-b-4 border-hot-red">
+<div class="flex items-center gap-12">
+<a href="index.html" class="font-headline-lg text-hot-red tracking-tighter cursor-pointer">NABE</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="index.html">Strona Główna</a>
+<a class="text-social-teal border-b-2 border-social-teal pb-1 font-label-bold text-label-bold" href="zamow.html">Zamów</a>
+<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="#">Rezerwacja</a>
+<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="#">Galeria</a>
+<a class="text-on-surface hover:text-social-teal transition-colors font-label-bold text-label-bold" href="#">Kontakt</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface p-2 hover:bg-surface-variant rounded-full transition-all">language</button>
+<button class="hidden md:block px-6 py-2 border-2 border-social-teal text-social-teal font-label-bold hover:bg-social-teal hover:text-background transition-all active:scale-95 duration-100">Login</button>
+<button class="px-6 py-2 bg-social-teal text-background font-label-bold border-2 border-social-teal hover:bg-transparent hover:text-social-teal transition-all active:scale-95 duration-100">ZAREZERWUJ STOLIK</button>
+</div>
+</nav>
+<main class="pt-20 flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-20 bottom-0 flex flex-col p-stack-sm bg-surface-container border-r-4 border-hot-red w-64 hidden lg:flex z-40">
+<div class="mb-stack-md px-2">
+<h2 class="font-headline-lg text-hot-red text-[32px] leading-none mb-1">KATEGORIE</h2>
+<p class="text-on-surface-variant font-label-bold text-xs uppercase tracking-widest">Wybierz swoje BBQ</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<button class="flex items-center gap-4 p-4 bg-social-teal text-background font-bold transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">restaurant</span>
+<span class="font-label-bold text-label-bold">Wołowina</span>
+</button>
+<button class="flex items-center gap-4 p-4 text-on-surface hover:bg-surface-variant transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">kebab_dining</span>
+<span class="font-label-bold text-label-bold">Drób</span>
+</button>
+<button class="flex items-center gap-4 p-4 text-on-surface hover:bg-surface-variant transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">outdoor_grill</span>
+<span class="font-label-bold text-label-bold">Kiełbaski</span>
+</button>
+<button class="flex items-center gap-4 p-4 text-on-surface hover:bg-surface-variant transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">set_meal</span>
+<span class="font-label-bold text-label-bold">Owoce morza</span>
+</button>
+<button class="flex items-center gap-4 p-4 text-on-surface hover:bg-surface-variant transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-label-bold text-label-bold">Warzywa</span>
+</button>
+</nav>
+<button class="mt-auto w-full py-4 border-2 border-on-surface text-on-surface font-label-bold hover:bg-on-surface hover:text-background transition-all">
+                FILTRUJ
+            </button>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-grow lg:pl-64 lg:pr-96 p-margin-mobile md:p-12">
+<div class="max-w-4xl mx-auto">
+<header class="mb-stack-lg border-b-2 border-surface-variant pb-6 flex justify-between items-end">
+<div>
+<span class="text-social-teal font-label-bold text-xs uppercase tracking-widest mb-2 block">Premium BBQ</span>
+<h2 class="font-headline-xl text-headline-xl text-hot-red">NASZE MENU</h2>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 bg-surface-container-highest text-on-surface font-label-bold text-xs border border-outline hover:border-social-teal transition-all">LUNCH MENU</button>
+<button class="px-4 py-2 bg-social-teal text-background font-label-bold text-xs border border-social-teal">A LA CARTE</button>
+</div>
+</header>
+<!-- Grid Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md gap-8">
+<!-- Menu Item: Stek Kobe -->
+<div class="group relative bg-deep-maroon border-2 border-hot-red overflow-hidden transition-transform active:scale-95 duration-200 p-4">
+<div class="h-64 relative overflow-hidden">
+<img alt="Premium Kobe beef steak" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIWaw7beTw8sqa0D-bPRr3tJBlkaYnxrYFcGSkX_2Uc0pCcFbKlNELhlmCd4BbeyQg4HRJzK2MycXeOeFoxQEwkerQsjHRZWoPMWGYPd4PYAuESGkrPpz_M6OMLVsiTpt5FRAnFNC1obxujluVGVKosNJ88tvhq1dlOl8EH_4MnvaTB_NJuc5OdXq8JwUUN9r0iWp5JmS-tkawqqoVddpoMj_t4XbV_78a-Si1kBOvMw5DWs1LjbuQKQxxYYMPrTu9VA8">
+<div class="absolute inset-0 bg-gradient-overlay opacity-80"></div>
+<div class="absolute top-4 right-4 bg-social-teal text-background px-3 py-1 font-price-display text-price-display hard-shadow">120 PLN</div>
+</div>
+<div class="p-stack-sm flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg text-headline-lg-mobile text-vintage-cream">Stek Kobe</h3>
+<p class="text-on-surface-variant text-sm mt-1">Marmurkowate plastry, idealne na grill.</p>
+</div>
+<button class="w-12 h-12 flex items-center justify-center bg-social-teal text-background hover:bg-vintage-cream transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Menu Item: Antrykot Wagyu -->
+<div class="group relative bg-deep-maroon border-2 border-hot-red overflow-hidden transition-transform active:scale-95 duration-200 p-4">
+<div class="h-64 relative overflow-hidden">
+<img alt="Wagyu Ribeye slices for BBQ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSGlwDK5MvGV39oRERTtTF2isOLnXMpZLC81B0xY6l5q21XVvBQxdA_DEX-HYgXF7Y7FukLoiyt_cVzR_EJIcoHnAEw0jfyHUdADlBCu7DBeAJp84EYV1prYlg1t-q6byS03_5gHMcpp0LpXqaerLFOfHUoIYYWIlKlr5XkhqzfxIgUY659npYMbb5250ULWnR02amDN4oD9BuBc7JtulW3KX6eujLNiqFx-xU_Mp3PDrVo9VFwfY_KR7r72OuyntTVMc">
+<div class="absolute inset-0 bg-gradient-overlay opacity-80"></div>
+<div class="absolute top-4 right-4 bg-social-teal text-background px-3 py-1 font-price-display text-price-display hard-shadow">85 PLN</div>
+</div>
+<div class="p-stack-sm flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg text-headline-lg-mobile text-vintage-cream">Antrykot Wagyu</h3>
+<p class="text-on-surface-variant text-sm mt-1">Selekcjonowany antrykot, cięty cienko.</p>
+</div>
+<button class="w-12 h-12 flex items-center justify-center bg-social-teal text-background hover:bg-vintage-cream transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Menu Item: Boczek BBQ -->
+<div class="group relative bg-deep-maroon border-2 border-hot-red overflow-hidden transition-transform active:scale-95 duration-200 md:col-span-2 p-4">
+<div class="flex flex-col md:flex-row h-full">
+<div class="h-64 md:h-auto md:w-1/2 relative overflow-hidden">
+<img alt="Marinated BBQ Pork Belly" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLusjjLBLfX6gjpp77hHF5n7wUzRvyyNgW_ugDrgZ-RvpL5DZy1138-7P8YwO6-8jamOu5di_xC-V1bbkbKu9BrWOjLoZVhwtt25uFyjoUZzEC3IUek2LRWz4bg2mlpmRqFvsSRXiLl1ACI_IqArhO8jS0EUmK16T5SseQf2AtyNp47ZtkMj6jsDW9JO6fWlQZETZior6KS-mOtSfoLZHiAknB6NHzVlyzupEU0JonDGb1EvdwIfym4BGEbV">
+<div class="absolute inset-0 bg-gradient-overlay opacity-40"></div>
+</div>
+<div class="p-stack-md md:w-1/2 flex flex-col justify-center">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg text-vintage-cream leading-none">Boczek BBQ</h3>
+<div class="bg-social-teal text-background px-3 py-1 font-price-display text-price-display hard-shadow">45 PLN</div>
+</div>
+<p class="text-on-surface-variant text-body-md mb-8">Soczyste kawałki boczku marynowane w autorskiej kompozycji przypraw orientalnych z nutą dymu.</p>
+<button class="w-full py-4 bg-social-teal text-background font-label-bold border-2 border-social-teal hover:bg-transparent hover:text-social-teal transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                                    DODAJ DO KOSZYKA
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<div class="my-stack-lg border-hot-red pt-4 flex items-center justify-center text-on-surface-variant opacity-50 text-xl tracking-[1em]">
+                    ++++++++++
+                </div>
+</div>
+</section>
+<!-- Right Side Panel: Cart & Booking -->
+<aside class="fixed right-0 top-20 bottom-0 w-96 bg-surface-container-high border-l-4 border-hot-red hidden xl:flex flex-col z-40 overflow-y-auto">
+<!-- Cart Section -->
+<div class="p-stack-md border-b-2 border-surface-variant">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-lg text-[32px] text-vintage-cream leading-none">KOSZYK</h2>
+<span class="bg-hot-red text-vintage-cream px-2 py-0.5 rounded-full font-label-bold text-xs">3 PRZEDMIOTY</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<span class="font-label-bold text-social-teal">2x</span>
+<div>
+<h4 class="font-label-bold text-vintage-cream">Stek Kobe</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">BBQ PREMIUM</p>
+</div>
+</div>
+<span class="font-price-display text-lg text-vintage-cream">240.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<span class="font-label-bold text-social-teal">1x</span>
+<div>
+<h4 class="font-label-bold text-vintage-cream">Antrykot Wagyu</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">BBQ PREMIUM</p>
+</div>
+</div>
+<span class="font-price-display text-lg text-vintage-cream">85.00</span>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant space-y-2">
+<div class="flex justify-between text-on-surface-variant text-sm font-label-bold">
+<span class="">SUMA CZĘŚCIOWA</span>
+<span class="">325.00 PLN</span>
+</div>
+<div class="flex justify-between text-on-surface-variant text-sm font-label-bold">
+<span class="">PODATEK (8%)</span>
+<span class="">26.00 PLN</span>
+</div>
+<div class="flex justify-between text-social-teal text-2xl mt-4 font-headline-lg">
+<span class="">SUMA</span>
+<span class="">351.00 PLN</span>
+</div>
+</div>
+</div>
+<!-- Booking Form Section -->
+<div class="p-stack-md flex-grow">
+<h2 class="font-headline-lg text-[32px] text-vintage-cream leading-none mb-6">REZERWACJA</h2>
+<form class="space-y-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-social-teal">calendar_today</span>
+<input class="w-full bg-surface-container-low border-2 border-outline-variant focus:border-social-teal text-on-surface pl-12 py-3 rounded-none outline-none transition-all placeholder:text-outline-variant font-label-bold text-sm" placeholder="Data (DD.MM.RRRR)" type="text">
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-social-teal">schedule</span>
+<input class="w-full bg-surface-container-low border-2 border-outline-variant focus:border-social-teal text-on-surface pl-12 py-3 rounded-none outline-none transition-all placeholder:text-outline-variant font-label-bold text-sm" placeholder="Godzina (HH:MM)" type="text">
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-social-teal">group</span>
+<select class="w-full bg-surface-container-low border-2 border-outline-variant focus:border-social-teal text-on-surface pl-12 py-3 rounded-none outline-none transition-all appearance-none font-label-bold text-sm">
+<option>Liczba osób</option>
+<option>2 Osoby</option>
+<option>4 Osoby</option>
+<option>6+ Osób</option>
+</select>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-social-teal">call</span>
+<input class="w-full bg-surface-container-low border-2 border-outline-variant focus:border-social-teal text-on-surface pl-12 py-3 rounded-none outline-none transition-all placeholder:text-outline-variant font-label-bold text-sm" placeholder="Numer Telefonu" type="tel">
+</div>
+<button class="w-full mt-6 py-4 bg-social-teal text-background font-headline-lg text-xl tracking-wide hover:bg-vintage-cream transition-all active:scale-95 hard-shadow border-2 border-social-teal" type="button">
+                        POTWIERDŹ REZERWACJĘ
+                    </button>
+</form>
+<div class="mt-8 p-4 bg-surface-container border border-hot-red">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-hot-red">info</span>
+<p class="text-xs text-on-surface-variant font-label-bold leading-relaxed">
+                            Prosimy o przybycie 10 minut trước thời gian đặt. Rezerwacja wygasa po 15 minutach spóźnienia.
+                        </p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Mobile Bottom Navigation (Shell Implementation) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-background border-t border-hot-red flex justify-around items-center h-16 z-50">
+<a href="index.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-label-bold">DOM</span>
+</a>
+<a href="zamow.html" class="flex flex-col items-center gap-1 text-social-teal">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">restaurant_menu</span>
+<span class="text-[10px] font-label-bold">ZAMÓW</span>
+</a>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-label-bold">REZERWUJ</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-label-bold">KOSZYK</span>
+</button>
+</nav>
+<script>
+        // Simple Micro-interaction for add to cart
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.innerText.includes('DODAJ')) {
+                    const ripple = document.createElement('div');
+                    ripple.className = 'absolute inset-0 bg-white/20 animate-ping pointer-events-none';
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 500);
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
