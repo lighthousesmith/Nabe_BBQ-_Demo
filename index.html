@@ -107,41 +107,37 @@
         .custom-border-teal { border: 3px solid #7FCFD4; }
         .section-divider { border-top: 4px solid #FDF5E6; }
         select { background-image: none !important; }
+        .active-nav-item {
+            color: #7dd3fc !important;
+            border-bottom: 3px solid #7dd3fc;
+        }
     </style>
 </head>
 <body class="bg-primary-container text-vintage-cream antialiased font-body-md">
-<!-- TopAppBar -->
-<header class="bg-deep-maroon dark:bg-background full-width top-0 sticky z-50 border-b-4 border-social-teal">
-<div class="flex justify-between items-center px-margin-desktop py-4 w-full">
-<div class="font-headline-lg text-headline-lg tracking-tighter text-vintage-cream flex items-center gap-4">
-<a href="index.html" class="flex items-center gap-4">
-<img alt="NĀBE Logo" class="h-12 w-auto object-contain hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGMhcNgAJff0xLO8zo0x0DAvGBAIxKX8dH1w9S2ZHacNKTd678Yvdl1wqeRCRla1JuAz4DtLY1D5MetwiGAx6uAYEt7UwVV-RL7F89MZwrfN79Qb2yteAvFgV7LdaTNlHWWRw2v1qrfIwqPDsph095ryinlwWKyEv5aR37zxEq_23EElIRL4ZUsZfh9w_HOEDQ_D9LiBOxZZyU4b9lXLACfKyyZmIiHGcn7PBJdp_ELGdKQUnwKmSp6XTG1DSvhaPcQPM"/>
-<span>NĀBE</span>
+<!-- Header -->
+<nav class="shrink-0 h-20 sticky top-0 bg-background border-b border-surface-variant px-margin-mobile lg:px-margin-desktop flex items-center justify-between z-50">
+<div class="flex items-center gap-12">
+<a class="block w-16 h-16" href="index.html">
+<img alt="NABE Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmBpyt6w8uqdNTQZbRsO0Dgl0vnIpxd2p-p-MiD4KrDXvXzlZcRLc93RObwS1qbnxOuByoSDThkxPvcQg1UrI5Wqgb_MVZRoyF-ANdTrc4v94GIKBqWLHwsHs46U0na1C41Qmq1VigIiZ_A3lillG17KRK93OEJzjfisU9OIwzjPQlYpZrdYSC2XNDxHXaixjpkPZXT5gD0fAIwmj6PcMuyR-sXBkgnR0Nuqlp_mgF9XVtohUfikjWSnqUkudIvsWPRxg"/>
 </a>
+<div class="hidden lg:flex items-center gap-8">
+<a class="active-nav-item font-bold pb-1" href="index.html">Strona Główna</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html">Zamów</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Rezerwacja</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Galeria</a>
+<a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="#">Kontakt</a>
 </div>
-<nav class="hidden lg:flex gap-6 items-center">
-<a class="font-label-bold text-label-bold text-social-teal font-bold border-b-2 border-social-teal pb-1" href="index.html">Strona Główna</a>
-<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="zamow.html">Zamów</a>
-<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Rezerwacja</a>
-<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Galeria</a>
-<a class="font-label-bold text-label-bold text-vintage-cream hover:text-social-teal transition-colors" href="#">Kontakt</a>
-<div class="flex items-center gap-2 ml-4">
-<span class="material-symbols-outlined text-vintage-cream text-lg">language</span>
-<select class="bg-transparent text-vintage-cream font-label-bold text-sm border-none focus:ring-0 cursor-pointer p-0">
-<option class="bg-surface text-white" selected="" value="pl">Polski</option>
-<option class="bg-surface text-white" value="en">Angielski</option>
-</select>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-center gap-2 text-vintage-cream cursor-pointer">
+<span class="material-symbols-outlined text-xl">language</span>
+<span class="text-sm font-bold">POLSKI</span>
+</div>
+<button class="bg-social-teal text-background font-bold px-6 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase text-sm tracking-tight">
+            Zarezerwuj stolik
+        </button>
 </div>
 </nav>
-<div class="flex items-center gap-4">
-<button class="text-vintage-cream font-label-bold text-label-bold hover:text-social-teal transition-colors flex items-center gap-1">
-<span class="material-symbols-outlined">person</span>
-                Zaloguj się
-            </button>
-<button class="bg-social-teal text-black font-label-bold text-label-bold px-4 py-2 md:px-6 md:py-3 uppercase tracking-wider custom-border hover:bg-vintage-cream transition-colors text-xs md:text-label-bold">Zarezerwuj Stolik</button>
-</div>
-</div>
-</header>
 <!-- Quick Booking Section -->
 <section class="bg-surface-container-high py-4 px-margin-mobile md:px-margin-desktop border-b-2 border-vintage-cream/20">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
