@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html class="dark" lang="pl">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>NĀBE - Polityka Prywatności</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#ffdad6",
+            "secondary": "#cdc6b8",
+            "primary-container": "#800000",
+            "primary": "#ffb4a8",
+            "surface": "#1d100e",
+            "surface-bright": "#463533",
+            "on-secondary-fixed": "#1e1b13",
+            "on-tertiary-fixed-variant": "#004f53",
+            "background": "#1d100e",
+            "on-surface-variant": "#e2bfb9",
+            "tertiary-fixed-dim": "#83d3d9",
+            "primary-fixed": "#ffdad4",
+            "outline": "#a98984",
+            "on-primary-container": "#ff8371",
+            "surface-container": "#2a1c1a",
+            "tertiary-container": "#004447",
+            "secondary-fixed-dim": "#cdc6b8",
+            "primary-fixed-dim": "#ffb4a8",
+            "error-container": "#93000a",
+            "tertiary": "#83d3d9",
+            "outline-variant": "#5a413d",
+            "on-secondary-container": "#beb8aa",
+            "on-primary-fixed": "#410000",
+            "error": "#ffb4ab",
+            "on-background": "#f7ddd8",
+            "deep-maroon": "#4A0000",
+            "surface-container-low": "#261816",
+            "on-tertiary-container": "#63b4b9",
+            "surface-container-highest": "#41312e",
+            "surface-container-high": "#362624",
+            "on-surface": "#f7ddd8",
+            "on-secondary-fixed-variant": "#4b463c",
+            "surface-container-lowest": "#170b09",
+            "on-tertiary": "#003739",
+            "surface-variant": "#41312e",
+            "inverse-primary": "#b22b1d",
+            "inverse-surface": "#f7ddd8",
+            "social-teal": "#7dd3fc",
+            "on-error": "#690005",
+            "hot-red": "#ff003c",
+            "secondary-fixed": "#e9e2d3",
+            "surface-tint": "#ffb4a8",
+            "on-tertiary-fixed": "#002021",
+            "inverse-on-surface": "#3d2d2a",
+            "on-primary-fixed-variant": "#8f0f07",
+            "on-secondary": "#343026",
+            "surface-dim": "#1d100e",
+            "vintage-cream": "#FDF5E6",
+            "secondary-container": "#4d493e",
+            "tertiary-fixed": "#a0f0f5",
+            "on-primary": "#690000"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "margin-desktop": "5rem",
+            "gutter": "1rem",
+            "stack-lg": "3rem",
+            "margin-mobile": "1.25rem",
+            "stack-xs": "0.25rem",
+            "stack-sm": "0.75rem",
+            "stack-md": "1.5rem"
+          },
+          fontFamily: {
+            "price-display": ["Anton", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "headline-xl": ["Anton", "sans-serif"],
+            "headline-lg-mobile": ["Anton", "sans-serif"],
+            "headline-lg": ["Anton", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "label-bold": ["Space Grotesk", "sans-serif"]
+          },
+          fontSize: {
+            "price-display": ["24px", {"lineHeight": "1.0", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+            "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+            "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}],
+            "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}]
+          }
+        },
+      },
+    };
+  </script>
+  <style>
+    .custom-border { border: 3px solid #FDF5E6; }
+    .custom-border-teal { border: 3px solid #7dd3fc; }
+    .active-nav-item {
+      color: #7dd3fc !important;
+      border-bottom: 3px solid #7dd3fc;
+    }
+    html {
+      background-color: #1d100e !important;
+      scroll-behavior: smooth;
+    }
+    body {
+      opacity: 0;
+      transition: opacity 0.35s ease-in-out;
+    }
+    body.page-loaded {
+      opacity: 1;
+    }
+    .legal-card {
+      border: 2px solid #FDF5E6;
+      transition: all 0.3s ease;
+    }
+    .legal-card:hover {
+      border-color: #7dd3fc;
+      box-shadow: 4px 4px 0px #7dd3fc;
+    }
+    /* Smooth Scroll Spy Highlight colors */
+    aside ul li a.active-spy {
+      color: #7dd3fc !important;
+    }
+  </style>
+</head>
+<body class="bg-primary-container text-vintage-cream antialiased font-body-md">
+
+<!-- Header -->
+<header class="shrink-0 h-20 sticky top-0 bg-background border-b-4 border-hot-red px-margin-mobile lg:px-margin-desktop flex items-center justify-between z-50">
+  <div class="flex items-center gap-12">
+    <a class="block w-16 h-16" href="index.html">
+      <img alt="NABE Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmBpyt6w8uqdNTQZbRsO0Dgl0vnIpxd2p-p-MiD4KrDXvXzlZcRLc93RObwS1qbnxOuByoSDThkxPvcQg1UrI5Wqgb_MVZRoyF-ANdTrc4v94GIKBqWLHwsHs46U0na1C41Qmq1VigIiZ_A3lillG17KRK93OEJzjfisU9OIwzjPQlYpZrdYSC2XNDxHXaixjpkPZXT5gD0fAIwmj6PcMuyR-sXBkgnR0Nuqlp_mgF9XVtohUfikjWSnqUkudIvsWPRxg"/>
+    </a>
+    <div class="hidden lg:flex items-center gap-8">
+      <a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="index.html" data-i18n="nav-home">Strona Główna</a>
+      <a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html" data-i18n="nav-order">Zamów</a>
+      <a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="zamow.html#book" data-i18n="nav-reservation">Rezerwacja</a>
+      <a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="galeria.html" data-i18n="nav-gallery">Galeria</a>
+      <a class="text-vintage-cream font-medium hover:text-social-teal transition-colors" href="kontakt.html" data-i18n="nav-contact">Kontakt</a>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="relative group" id="lang-dropdown-container">
+      <button id="lang-select-btn" class="flex items-center gap-2 text-vintage-cream hover:text-social-teal transition-colors focus:outline-none py-2">
+        <span class="material-symbols-outlined text-xl">language</span>
+        <span id="active-lang-label" class="text-sm font-bold tracking-wider">POLSKI</span>
+        <span class="material-symbols-outlined text-xs transition-transform duration-200 group-hover:rotate-180">keyboard_arrow_down</span>
+      </button>
+      <div id="lang-dropdown-menu" class="absolute right-0 mt-1 w-40 bg-surface-container border border-surface-variant rounded-sm shadow-xl hidden group-hover:flex flex-col z-50">
+        <button onclick="changeLanguage('pl')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+          <span>🇵🇱</span> POLSKI
+        </button>
+        <button onclick="changeLanguage('en')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream border-b border-surface-variant/30 transition-colors">
+          <span>🇬🇧</span> ENGLISH
+        </button>
+        <button onclick="changeLanguage('vi')" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-variant text-left text-sm font-bold text-vintage-cream transition-colors">
+          <span>🇻🇳</span> TIẾNG VIỆT
+        </button>
+      </div>
+    </div>
+    <button onclick="navigateToPage('zamow.html#book')" data-i18n="btn-book-table" class="hidden lg:block bg-social-teal text-background font-bold px-6 py-2.5 rounded-sm hover:brightness-110 transition-all uppercase text-sm tracking-tight">
+      Zarezerwuj stolik
+    </button>
+    <button onclick="toggleMobileMenu(true)" class="lg:hidden material-symbols-outlined text-on-surface text-3xl hover:text-social-teal transition-colors focus:outline-none" data-icon="menu">menu</button>
+  </div>
+</header>
+
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+  <!-- Hero Section -->
+  <div class="mb-16">
+    <h1 class="font-headline text-5xl md:text-headline-xl text-hot-red uppercase mb-4 tracking-tight" data-i18n="privacy-title">
+      POLITYKA PRYWATNOŚCI
+    </h1>
+    <div class="h-1 w-24 bg-social-teal mb-8"></div>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" data-i18n="privacy-subtitle">
+      W NABE szanujemy Twoją prywatność tak samo, jak Twoje kubki smakowe. Poniżej znajdziesz jasne i przejrzyste informacje o tym, jak dbamy o Twoje dane.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <!-- Sidebar / Quick Links -->
+    <aside class="hidden lg:block lg:col-span-3">
+      <div class="sticky top-28 space-y-4">
+        <p class="font-label-bold text-label-bold text-social-teal uppercase tracking-widest mb-6" data-i18n="privacy-toc">SPIS TREŚCI</p>
+        <ul class="space-y-4 font-label-bold text-[12px] uppercase">
+          <li><a class="text-on-surface-variant hover:text-social-teal transition-colors flex items-center gap-2" href="#administrator"><span>+++++</span> <span data-i18n="privacy-sect1-toc">Administrator</span></a></li>
+          <li><a class="text-on-surface-variant hover:text-social-teal transition-colors flex items-center gap-2" href="#cele"><span>+++++</span> <span data-i18n="privacy-sect2-toc">Cele przetwarzania</span></a></li>
+          <li><a class="text-on-surface-variant hover:text-social-teal transition-colors flex items-center gap-2" href="#prawa"><span>+++++</span> <span data-i18n="privacy-sect3-toc">Twoje Prawa</span></a></li>
+          <li><a class="text-on-surface-variant hover:text-social-teal transition-colors flex items-center gap-2" href="#cookies"><span>+++++</span> <span data-i18n="privacy-sect4-toc">Pliki Cookies</span></a></li>
+          <li><a class="text-on-surface-variant hover:text-social-teal transition-colors flex items-center gap-2" href="#kontakt"><span>+++++</span> <span data-i18n="privacy-sect5-toc">Kontakt</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <div class="lg:col-span-9 space-y-16">
+      <!-- Section 1 -->
+      <section class="legal-card bg-surface-container p-gutter md:p-stack-md" id="administrator">
+        <h2 class="font-headline text-3xl md:text-4xl text-vintage-cream uppercase mb-6 flex items-center gap-4">
+          <span class="text-social-teal">01.</span> <span data-i18n="privacy-sect1-title">Administrator Danych</span>
+        </h2>
+        <div class="space-y-4 text-on-surface-variant text-sm md:text-base leading-relaxed">
+          <p data-i18n="privacy-sect1-p1">Administratorem Twoich danych osobowych jest <strong>NABE Hotpot &amp; BBQ Sp. z o.o.</strong> z siedzibą w Warszawie (00-001), ul. Smakowita 12, wpisana do rejestru przedsiębiorców pod numerem KRS: 0000123456.</p>
+          <p data-i18n="privacy-sect1-p2">Działamy zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO), zapewniając najwyższe standardy bezpieczeństwa Twoich informacji.</p>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="legal-card bg-surface-container p-gutter md:p-stack-md" id="cele">
+        <h2 class="font-headline text-3xl md:text-4xl text-vintage-cream uppercase mb-6 flex items-center gap-4">
+          <span class="text-social-teal">02.</span> <span data-i18n="privacy-sect2-title">Cele i Podstawy</span>
+        </h2>
+        <div class="space-y-6 text-on-surface-variant">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="border-l-4 border-hot-red pl-4">
+              <h3 class="font-label-bold text-label-bold text-vintage-cream uppercase mb-2" data-i18n="privacy-sect2-card1-title">Rezerwacje i Zamówienia</h3>
+              <p class="text-xs md:text-sm" data-i18n="privacy-sect2-card1-desc">Przetwarzamy Twoje dane w celu realizacji rezerwacji stolików oraz obsługi zamówień online (Art. 6 ust. 1 lit. b RODO).</p>
+            </div>
+            <div class="border-l-4 border-hot-red pl-4">
+              <h3 class="font-label-bold text-label-bold text-vintage-cream uppercase mb-2" data-i18n="privacy-sect2-card2-title">Marketing i Newsletter</h3>
+              <p class="text-xs md:text-sm" data-i18n="privacy-sect2-card2-desc">Za Twoją zgodą informujemy o nowych promocjach i wydarzeniach w NABE (Art. 6 ust. 1 lit. a RODO).</p>
+            </div>
+            <div class="border-l-4 border-hot-red pl-4">
+              <h3 class="font-label-bold text-label-bold text-vintage-cream uppercase mb-2" data-i18n="privacy-sect2-card3-title">Bezpieczeństwo</h3>
+              <p class="text-xs md:text-sm" data-i18n="privacy-sect2-card3-desc">Monitoring wizyjny w naszych lokalach służy zapewnieniu bezpieczeństwa gości i mienia (Art. 6 ust. 1 lit. f RODO).</p>
+            </div>
+            <div class="border-l-4 border-hot-red pl-4">
+              <h3 class="font-label-bold text-label-bold text-vintage-cream uppercase mb-2" data-i18n="privacy-sect2-card4-title">Analiza i Statystyki</h3>
+              <p class="text-xs md:text-sm" data-i18n="privacy-sect2-card4-desc">Doskonalimy nasze usługi analizując sposób korzystania z aplikacji NABE (Art. 6 ust. 1 lit. f RODO).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="legal-card bg-surface-container p-gutter md:p-stack-md" id="prawa">
+        <h2 class="font-headline text-3xl md:text-4xl text-vintage-cream uppercase mb-6 flex items-center gap-4">
+          <span class="text-social-teal">03.</span> <span data-i18n="privacy-sect3-title">Twoje Prawa</span>
+        </h2>
+        <p class="text-on-surface-variant mb-8 text-sm md:text-base" data-i18n="privacy-sect3-desc">Masz pełną kontrolę nad swoimi danymi. Przysługuje Ci prawo do:</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-center gap-4 bg-background p-4 border border-surface-variant/40">
+            <span class="material-symbols-outlined text-social-teal">visibility</span>
+            <span class="font-label-bold text-[12px] uppercase" data-i18n="privacy-sect3-r1">Dostępu do treści swoich danych</span>
+          </div>
+          <div class="flex items-center gap-4 bg-background p-4 border border-surface-variant/40">
+            <span class="material-symbols-outlined text-social-teal">edit</span>
+            <span class="font-label-bold text-[12px] uppercase" data-i18n="privacy-sect3-r2">Sprostowania nieprawidłowych danych</span>
+          </div>
+          <div class="flex items-center gap-4 bg-background p-4 border border-surface-variant/40">
+            <span class="material-symbols-outlined text-social-teal">delete_forever</span>
+            <span class="font-label-bold text-[12px] uppercase" data-i18n="privacy-sect3-r3">Usunięcia danych ("prawo do bycia zapomnianym")</span>
+          </div>
+          <div class="flex items-center gap-4 bg-background p-4 border border-surface-variant/40">
+            <span class="material-symbols-outlined text-social-teal">download</span>
+            <span class="font-label-bold text-[12px] uppercase" data-i18n="privacy-sect3-r4">Przenoszenia danych do innego administratora</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="legal-card bg-surface-container p-gutter md:p-stack-md" id="cookies">
+        <h2 class="font-headline text-3xl md:text-4xl text-vintage-cream uppercase mb-6 flex items-center gap-4">
+          <span class="text-social-teal">04.</span> <span data-i18n="privacy-sect4-title">Pliki Cookies</span>
+        </h2>
+        <div class="text-on-surface-variant space-y-4 text-sm md:text-base leading-relaxed">
+          <p data-i18n="privacy-sect4-desc">Nasza strona używa "ciasteczek" dla zapewnienia najlepszych wrażeń użytkownika. Wykorzystujemy pliki:</p>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li><strong data-i18n="privacy-sect4-c1-t">Niezbędne:</strong> <span data-i18n="privacy-sect4-c1-d">do działania podstawowych funkcji strony.</span></li>
+            <li><strong data-i18n="privacy-sect4-c2-t">Funkcjonalne:</strong> <span data-i18n="privacy-sect4-c2-d">zapamiętujące Twoje preferencje (np. język).</span></li>
+            <li><strong data-i18n="privacy-sect4-c3-t">Analityczne:</strong> <span data-i18n="privacy-sect4-c3-d">pomagające nam zrozumieć, jak poruszasz się po menu NABE.</span></li>
+          </ul>
+          <p class="mt-4" data-i18n="privacy-sect4-p2">Możesz w każdej chwili zmienić ustawienia plików cookies w swojej przeglądarce.</p>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="legal-card bg-surface-container border-2 border-hot-red p-gutter md:p-stack-md" id="kontakt">
+        <h2 class="font-headline text-3xl md:text-4xl text-vintage-cream uppercase mb-6 flex items-center gap-4">
+          <span class="text-social-teal">05.</span> <span data-i18n="privacy-sect5-title">Kontakt</span>
+        </h2>
+        <p class="text-on-surface-variant mb-8 text-sm md:text-base leading-relaxed" data-i18n="privacy-sect5-desc">Masz pytania dotyczące ochrony danych? Napisz do nas bezpośrednio lub skontaktuj się z naszym Inspektorem Ochrony Danych.</p>
+        <div class="flex flex-col sm:flex-row gap-6">
+          <div class="bg-surface-container-low border border-surface-variant p-6 flex-1 flex flex-col items-center justify-center text-center">
+            <span class="material-symbols-outlined text-social-teal text-4xl mb-2">mail</span>
+            <span class="font-label-bold text-label-bold uppercase text-vintage-cream mb-1">Email</span>
+            <span class="text-social-teal text-sm md:text-base font-bold">prywatnosc@nabe.pl</span>
+          </div>
+          <div class="bg-surface-container-low border border-surface-variant p-6 flex-1 flex flex-col items-center justify-center text-center">
+            <span class="material-symbols-outlined text-social-teal text-4xl mb-2">call</span>
+            <span class="font-label-bold text-label-bold uppercase text-vintage-cream mb-1">Telefon</span>
+            <span class="text-social-teal text-sm md:text-base font-bold">+48 123 456 789</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-black full-width p-stack-lg border-t-4 border-deep-maroon">
+  <div class="flex flex-col md:flex-row justify-between items-start gap-gutter max-w-7xl mx-auto">
+    <div class="flex flex-col gap-stack-sm">
+      <span class="font-headline text-2xl text-social-teal uppercase tracking-tighter">NĀBE</span>
+      <p class="text-xs text-vintage-cream dark:text-on-surface opacity-70" data-i18n="footer-desc">© 2024 NĀBE HOTPOT &amp; BBQ. WSZELKIE PRAWA ZASTRZEŻONE.</p>
+    </div>
+    <nav class="flex flex-col md:flex-row gap-stack-md md:gap-gutter">
+      <a class="text-xs text-social-teal underline font-bold transition-colors" href="polityka-prywatnosci.html" data-i18n="footer-privacy">Polityka Prywatności</a>
+      <a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-terms">Regulamin</a>
+      <a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-careers">Kariera</a>
+      <a class="text-xs text-on-surface-variant hover:text-social-teal underline transition-colors" href="#" data-i18n="footer-press">Materiały Prasowe</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Mobile Drawer Menu -->
+<div id="mobile-menu-drawer" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md hidden transition-all duration-300 opacity-0">
+  <div class="absolute top-0 right-0 w-3/4 max-w-sm h-full bg-surface-container border-l border-surface-variant p-6 flex flex-col shadow-2xl transition-transform duration-300 transform translate-x-full" id="mobile-drawer-content">
+    <div class="flex justify-between items-center mb-8 pb-4 border-b border-surface-variant/30">
+      <span class="font-headline text-2xl text-social-teal uppercase tracking-tighter">NĀBE</span>
+      <button onclick="toggleMobileMenu(false)" class="text-vintage-cream hover:text-social-teal transition-colors focus:outline-none">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-6">
+      <a class="text-xl font-label-bold uppercase text-vintage-cream hover:text-social-teal transition-colors" href="index.html" data-i18n="nav-home">Strona Główna</a>
+      <a class="text-xl font-label-bold uppercase text-vintage-cream hover:text-social-teal transition-colors" href="zamow.html" data-i18n="nav-order">Zamów</a>
+      <a class="text-xl font-label-bold uppercase text-vintage-cream hover:text-social-teal transition-colors" href="zamow.html#book" onclick="toggleMobileMenu(false)" data-i18n="nav-reservation">Rezerwacja</a>
+      <a class="text-xl font-label-bold uppercase text-vintage-cream hover:text-social-teal transition-colors" href="galeria.html" data-i18n="nav-gallery">Galeria</a>
+      <a class="text-xl font-label-bold uppercase text-vintage-cream hover:text-social-teal transition-colors" href="kontakt.html" data-i18n="nav-contact">Kontakt</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Cookies Micro-Interaction Overlay -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-2xl bg-surface-container-highest border-2 border-social-teal p-6 flex flex-col md:flex-row items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" id="cookie-banner">
+  <div class="flex-grow">
+    <h4 class="font-label-bold text-label-bold text-social-teal uppercase mb-2" data-i18n="cookie-title">PLIKI COOKIES</h4>
+    <p class="font-body-md text-xs md:text-sm text-on-surface" data-i18n="cookie-desc">Używamy cookies i pamięci przeglądarki do działania strony. Wybierz tylko niezbędne lub zaakceptuj wszystkie. Więcej w Polityce prywatności.</p>
+  </div>
+  <div class="flex gap-4 shrink-0">
+    <button class="bg-transparent border border-outline px-4 py-2 font-label-bold text-[12px] text-on-surface uppercase hover:bg-white/5 transition-colors" onclick="document.getElementById('cookie-banner').style.display='none'" data-i18n="cookie-btn-essential">TYLKO NIEZBĘDNE</button>
+    <button class="bg-social-teal text-background px-4 py-2 font-label-bold text-[12px] uppercase hover:brightness-110 transition-all" onclick="document.getElementById('cookie-banner').style.display='none'" data-i18n="cookie-btn-accept">AKCEPTUJĘ WSZYSTKIE</button>
+  </div>
+</div>
+
+<script>
+// ==========================================
+// TRANSLATION ENGINE (i18n)
+// ==========================================
+const translations = {
+  pl: {
+    "nav-home": "Strona Główna",
+    "nav-order": "Zamów",
+    "nav-reservation": "Rezerwacja",
+    "nav-gallery": "Galeria",
+    "nav-contact": "Kontakt",
+    "btn-book-table": "Zarezerwuj stolik",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. WSZELKIE PRAWA ZASTRZEŻONE.",
+    "footer-privacy": "Polityka Prywatności",
+    "footer-terms": "Regulamin",
+    "footer-careers": "Kariera",
+    "footer-press": "Materiały Prasowe",
+    "cookie-title": "PLIKI COOKIES",
+    "cookie-desc": "Używamy cookies i pamięci przeglądarki do działania strony. Wybierz tylko niezbędne lub zaakceptuj wszystkie. Więcej w Polityce prywatności.",
+    "cookie-btn-essential": "TYLKO NIEZBĘDNE",
+    "cookie-btn-accept": "AKCEPTUJĘ WSZYSTKIE",
+    
+    // Privacy policy specifics
+    "privacy-title": "POLITYKA PRYWATNOŚCI",
+    "privacy-subtitle": "W NABE szanujemy Twoją prywatność tak samo, jak Twoje kubki smakowe. Poniżej znajdziesz jasne i przejrzyste informacje o tym, jak dbamy o Twoje dane.",
+    "privacy-toc": "SPIS TREŚCI",
+    "privacy-sect1-toc": "Administrator",
+    "privacy-sect2-toc": "Cele przetwarzania",
+    "privacy-sect3-toc": "Twoje Prawa",
+    "privacy-sect4-toc": "Pliki Cookies",
+    "privacy-sect5-toc": "Kontakt",
+    
+    "privacy-sect1-title": "Administrator Danych",
+    "privacy-sect1-p1": "Administratorem Twoich danych osobowych jest NABE Hotpot & BBQ Sp. z o.o. z siedzibą w Warszawie (00-001), ul. Smakowita 12, wpisana do rejestru przedsiębiorców pod numerem KRS: 0000123456.",
+    "privacy-sect1-p2": "Działamy zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO), zapewniając najwyższe standardy bezpieczeństwa Twoich informacji.",
+    
+    "privacy-sect2-title": "Cele i Podstawy",
+    "privacy-sect2-card1-title": "Rezerwacje i Zamówienia",
+    "privacy-sect2-card1-desc": "Przetwarzamy Twoje dane w celu realizacji rezerwacji stolików oraz obsługi zamówień online (Art. 6 ust. 1 lit. b RODO).",
+    "privacy-sect2-card2-title": "Marketing i Newsletter",
+    "privacy-sect2-card2-desc": "Za Twoją zgodą informujemy o nowych promocjach i wydarzeniach w NABE (Art. 6 ust. 1 lit. a RODO).",
+    "privacy-sect2-card3-title": "Bezpieczeństwo",
+    "privacy-sect2-card3-desc": "Monitoring wizyjny w naszych lokalach służy zapewnieniu bezpieczeństwa gości i mienia (Art. 6 ust. 1 lit. f RODO).",
+    "privacy-sect2-card4-title": "Analiza i Statystyki",
+    "privacy-sect2-card4-desc": "Doskonalimy nasze usługi analizując sposób korzystania z aplikacji NABE (Art. 6 ust. 1 lit. f RODO).",
+    
+    "privacy-sect3-title": "Twoje Prawa",
+    "privacy-sect3-desc": "Masz pełną kontrolę nad swoimi danymi. Przysługuje Ci prawo do:",
+    "privacy-sect3-r1": "Dostępu do treści swoich danych",
+    "privacy-sect3-r2": "Sprostowania nieprawidłowych danych",
+    "privacy-sect3-r3": "Usunięcia danych (\"prawo do bycia zapomnianym\")",
+    "privacy-sect3-r4": "Przenoszenia danych do innego administratora",
+    
+    "privacy-sect4-title": "Pliki Cookies",
+    "privacy-sect4-desc": "Nasza strona używa \"ciasteczek\" dla zapewnienia najlepszych wrażeń użytkownika. Wykorzystujemy pliki:",
+    "privacy-sect4-c1-t": "Niezbędne:",
+    "privacy-sect4-c1-d": "do działania podstawowych funkcji strony.",
+    "privacy-sect4-c2-t": "Funkcjonalne:",
+    "privacy-sect4-c2-d": "zapamiętujące Twoje preferencje (np. język).",
+    "privacy-sect4-c3-t": "Analityczne:",
+    "privacy-sect4-c3-d": "pomagające nam zrozumieć, jak poruszasz się po menu NABE.",
+    "privacy-sect4-p2": "Możesz w każdej chwili zmienić ustawienia plików cookies w swojej przeglądarce.",
+    
+    "privacy-sect5-title": "Kontakt",
+    "privacy-sect5-desc": "Masz pytania dotyczące ochrony danych? Napisz do nas bezpośrednio lub skontaktuj się z naszym Inspektorem Ochrony Danych."
+  },
+  en: {
+    "nav-home": "Home",
+    "nav-order": "Order",
+    "nav-reservation": "Reservations",
+    "nav-gallery": "Gallery",
+    "nav-contact": "Contact",
+    "btn-book-table": "Book a Table",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. ALL RIGHTS RESERVED.",
+    "footer-privacy": "Privacy Policy",
+    "footer-terms": "Terms of Service",
+    "footer-careers": "Careers",
+    "footer-press": "Press Materials",
+    "cookie-title": "COOKIES",
+    "cookie-desc": "We use cookies and browser storage for site functionality. Choose only essential or accept all. More in Privacy Policy.",
+    "cookie-btn-essential": "ESSENTIAL ONLY",
+    "cookie-btn-accept": "ACCEPT ALL",
+    
+    // Privacy policy specifics
+    "privacy-title": "PRIVACY POLICY",
+    "privacy-subtitle": "At NABE, we respect your privacy as much as your taste buds. Below you will find clear and transparent information on how we take care of your data.",
+    "privacy-toc": "TABLE OF CONTENTS",
+    "privacy-sect1-toc": "Controller",
+    "privacy-sect2-toc": "Purposes of processing",
+    "privacy-sect3-toc": "Your Rights",
+    "privacy-sect4-toc": "Cookies Policy",
+    "privacy-sect5-toc": "Contact",
+    
+    "privacy-sect1-title": "Data Controller",
+    "privacy-sect1-p1": "The controller of your personal data is NABE Hotpot & BBQ Sp. z o.o. with its registered office in Warsaw (00-001), Smakowita 12, registered in the register of entrepreneurs under KRS: 0000123456.",
+    "privacy-sect1-p2": "We operate in accordance with the Regulation of the European Parliament and of the Council (EU) 2016/679 (GDPR), ensuring the highest safety standards for your information.",
+    
+    "privacy-sect2-title": "Purposes & Grounds",
+    "privacy-sect2-card1-title": "Reservations & Orders",
+    "privacy-sect2-card1-desc": "We process your data to fulfill table reservations and handle online orders (Art. 6(1)(b) of the GDPR).",
+    "privacy-sect2-card2-title": "Marketing & Newsletter",
+    "privacy-sect2-card2-desc": "With your consent, we inform you about new promotions and events at NABE (Art. 6(1)(a) of the GDPR).",
+    "privacy-sect2-card3-title": "Security",
+    "privacy-sect2-card3-desc": "Video monitoring in our premises serves to ensure the safety of guests and property (Art. 6(1)(f) of the GDPR).",
+    "privacy-sect2-card4-title": "Analysis & Statistics",
+    "privacy-sect2-card4-desc": "We improve our services by analyzing how the NABE application is used (Art. 6(1)(f) of the GDPR).",
+    
+    "privacy-sect3-title": "Your Rights",
+    "privacy-sect3-desc": "You have full control over your data. You have the right to:",
+    "privacy-sect3-r1": "Access the content of your data",
+    "privacy-sect3-r2": "Rectify incorrect data",
+    "privacy-sect3-r3": "Erase data (\"right to be forgotten\")",
+    "privacy-sect3-r4": "Port data to another controller",
+    
+    "privacy-sect4-title": "Cookies Policy",
+    "privacy-sect4-desc": "Our website uses cookies to ensure the best user experience. We use:",
+    "privacy-sect4-c1-t": "Essential:",
+    "privacy-sect4-c1-d": "for the operation of basic website functions.",
+    "privacy-sect4-c2-t": "Functional:",
+    "privacy-sect4-c2-d": "remembering your preferences (e.g. language).",
+    "privacy-sect4-c3-t": "Analytical:",
+    "privacy-sect4-c3-d": "helping us understand how you navigate the NABE menu.",
+    "privacy-sect4-p2": "You can change your cookie settings in your browser at any time.",
+    
+    "privacy-sect5-title": "Contact",
+    "privacy-sect5-desc": "Have questions about data protection? Write to us directly or contact our Data Protection Officer."
+  },
+  vi: {
+    "nav-home": "Trang Chủ",
+    "nav-order": "Đặt Món",
+    "nav-reservation": "Đặt Bàn",
+    "nav-gallery": "Thư Viện Ảnh",
+    "nav-contact": "Liên Hệ",
+    "btn-book-table": "Đặt Bàn Ngay",
+    "footer-desc": "© 2024 NĀBE HOTPOT & BBQ. BẢN QUYỀN ĐÃ ĐƯỢC BẢO HỘ.",
+    "footer-privacy": "Chính sách bảo mật",
+    "footer-terms": "Điều khoản dịch vụ",
+    "footer-careers": "Tuyển dụng",
+    "footer-press": "Thông cáo báo chí",
+    "cookie-title": "COOKIES",
+    "cookie-desc": "Chúng tôi sử dụng cookies và bộ nhớ trình duyệt để vận hành trang web. Chỉ chọn loại thiết yếu hoặc đồng ý tất cả. Xem thêm trong Chính sách bảo mật.",
+    "cookie-btn-essential": "CHỈ THIẾT YẾU",
+    "cookie-btn-accept": "ĐỒNG Ý TẤT CẢ",
+    
+    // Privacy policy specifics
+    "privacy-title": "CHÍNH SÁCH BẢO MẬT",
+    "privacy-subtitle": "Tại NABE, chúng tôi tôn trọng quyền riêng tư của bạn cũng giống như vị giác của bạn vậy. Dưới đây bạn sẽ tìm thấy thông tin rõ ràng và minh bạch về cách chúng tôi chăm sóc dữ liệu của bạn.",
+    "privacy-toc": "MỤC LỤC",
+    "privacy-sect1-toc": "Đơn vị kiểm soát",
+    "privacy-sect2-toc": "Mục đích xử lý",
+    "privacy-sect3-toc": "Quyền của bạn",
+    "privacy-sect4-toc": "Chính sách Cookies",
+    "privacy-sect5-toc": "Liên hệ",
+    
+    "privacy-sect1-title": "Đơn vị Kiểm soát Dữ liệu",
+    "privacy-sect1-p1": "Đơn vị kiểm soát dữ liệu cá nhân của bạn là NABE Hotpot & BBQ Sp. z o.o. có trụ sở đăng ký tại Warsaw (00-001), đường Smakowita 12, đăng ký trong sổ đăng ký doanh nghiệp dưới số KRS: 0000123456.",
+    "privacy-sect1-p2": "Chúng tôi hoạt động tuân thủ Quy định của Nghị viện Châu Âu và Hội đồng (EU) 2016/679 (GDPR), đảm bảo các tiêu chuẩn an toàn cao nhất cho thông tin của bạn.",
+    
+    "privacy-sect2-title": "Mục đích & Cơ sở",
+    "privacy-sect2-card1-title": "Đặt bàn & Đặt món",
+    "privacy-sect2-card1-desc": "Chúng tôi xử lý dữ liệu của bạn để thực hiện đặt bàn và xử lý các đơn đặt hàng trực tuyến (Điều 6 (1) (b) của GDPR).",
+    "privacy-sect2-card2-title": "Tiếp thị & Bản tin",
+    "privacy-sect2-card2-desc": "Với sự đồng ý của bạn, chúng tôi sẽ thông báo cho bạn về các chương trình khuyến mãi và sự kiện mới tại NABE (Điều 6 (1) (a) của GDPR).",
+    "privacy-sect2-card3-title": "An ninh",
+    "privacy-sect2-card3-desc": "Giám sát camera tại cơ sở của chúng tôi nhằm mục đích đảm bảo an toàn cho khách hàng và tài sản (Điều 6 (1) (f) của GDPR).",
+    "privacy-sect2-card4-title": "Phân tích & Thống kê",
+    "privacy-sect2-card4-desc": "Chúng tôi cải thiện dịch vụ của mình bằng cách phân tích cách ứng dụng NABE được sử dụng (Điều 6 (1) (f) của GDPR).",
+    
+    "privacy-sect3-title": "Quyền của Bạn",
+    "privacy-sect3-desc": "Bạn có toàn quyền kiểm soát dữ liệu của mình. Bạn có quyền:",
+    "privacy-sect3-r1": "Truy cập nội dung dữ liệu của bạn",
+    "privacy-sect3-r2": "Sửa đổi dữ liệu không chính xác",
+    "privacy-sect3-r3": "Xóa dữ liệu (\"quyền được lãng quên\")",
+    "privacy-sect3-r4": "Chuyển dữ liệu sang một đơn vị kiểm soát khác",
+    
+    "privacy-sect4-title": "Chính sách Cookies",
+    "privacy-sect4-desc": "Trang web của chúng tôi sử dụng cookies để đảm bảo trải nghiệm tốt nhất cho người dùng. Chúng tôi sử dụng:",
+    "privacy-sect4-c1-t": "Thiết yếu:",
+    "privacy-sect4-c1-d": "để vận hành các chức năng cơ bản của trang web.",
+    "privacy-sect4-c2-t": "Tiện ích:",
+    "privacy-sect4-c2-d": "ghi nhớ sở thích của bạn (ví dụ: ngôn ngữ).",
+    "privacy-sect4-c3-t": "Phân tích:",
+    "privacy-sect4-c3-d": "giúp chúng tôi hiểu cách bạn điều hướng trong thực đơn NABE.",
+    "privacy-sect4-p2": "Bạn có thể thay đổi cài đặt cookies trong trình duyệt của mình bất cứ lúc nào.",
+    
+    "privacy-sect5-title": "Liên hệ",
+    "privacy-sect5-desc": "Có câu hỏi về bảo vệ dữ liệu? Hãy gửi thư trực tiếp cho chúng tôi hoặc liên hệ với Cán bộ Bảo vệ Dữ liệu của chúng tôi."
+  }
+};
+
+window.changeLanguage = function(lang) {
+  localStorage.setItem('selectedLanguage', lang);
+  applyTranslations(lang);
+};
+
+function applyTranslations(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      } else {
+        el.innerText = translations[lang][key];
+      }
+    }
+  });
+  
+  // Highlight active active-lang-label in navbar dropdown
+  const labels = { pl: 'POLSKI', en: 'ENGLISH', vi: 'TIẾNG VIỆT' };
+  const labelEl = document.getElementById('active-lang-label');
+  if (labelEl) {
+    labelEl.innerText = labels[lang] || 'POLSKI';
+  }
+  
+  // Sync page elements or dropdown style
+  const options = document.querySelectorAll('#lang-dropdown-menu button');
+  options.forEach(opt => {
+    if (opt.getAttribute('onclick').includes(lang)) {
+      opt.classList.add('text-social-teal');
+    } else {
+      opt.classList.remove('text-social-teal');
+    }
+  });
+}
+
+// ==========================================
+// INITIAL SETUP
+// ==========================================
+window.navigateToPage = function(url) {
+  document.body.classList.remove('page-loaded');
+  setTimeout(() => {
+    window.location.href = url;
+  }, 350);
+};
+
+window.toggleMobileMenu = function(open) {
+  const drawer = document.getElementById('mobile-menu-drawer');
+  const content = document.getElementById('mobile-drawer-content');
+  if (!drawer || !content) return;
+  
+  if (open) {
+    drawer.classList.remove('hidden');
+    setTimeout(() => {
+      drawer.classList.remove('opacity-0');
+      content.classList.remove('translate-x-full');
+    }, 50);
+  } else {
+    content.classList.add('translate-x-full');
+    drawer.classList.add('opacity-0');
+    setTimeout(() => {
+      drawer.classList.add('hidden');
+    }, 300);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Language from storage or default to PL
+  const savedLang = localStorage.getItem('selectedLanguage') || 'pl';
+  changeLanguage(savedLang);
+  
+  // Close language menu on clicking outside if clicked on mobile
+  const langSelectBtn = document.getElementById('lang-select-btn');
+  const langMenu = document.getElementById('lang-dropdown-menu');
+  if (langSelectBtn && langMenu) {
+    langSelectBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => {
+      langMenu.classList.add('hidden');
+    });
+  }
+
+  // Smooth page loading transition
+  document.body.classList.add('page-loaded');
+
+  // Intercept clicks on links for smooth fadeout transition
+  document.querySelectorAll('a').forEach(link => {
+    const isSamePage = link.hostname === window.location.hostname &&
+                       link.pathname === window.location.pathname &&
+                       link.search === window.location.search;
+    // For local # scroll links, skip the transition
+    if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+      return;
+    }
+    if (!isSamePage && link.getAttribute('href') !== '#' && link.target !== '_blank') {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const destination = link.href;
+        navigateToPage(destination);
+      });
+    }
+  });
+
+  // Smooth scroll and spy highlight
+  document.querySelectorAll('aside a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        window.scrollTo({
+          top: targetEl.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Basic scroll spy for sidebar highlighting
+  window.addEventListener('scroll', () => {
+    let current = "";
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("aside ul li a");
+    
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      if (window.pageYOffset >= sectionTop - 150) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navItems.forEach((item) => {
+      item.classList.remove("active-spy");
+      if (item.getAttribute("href").includes(current)) {
+        item.classList.add("active-spy");
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
